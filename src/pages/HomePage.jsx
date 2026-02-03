@@ -9,8 +9,8 @@ export default function Home() {
         <h1 style={{ fontSize: '3.5rem', margin: '0 0 10px 0', color: 'var(--retro-brown)' }}>
           MILO CLAYDON
         </h1>
+        <h2 style={{ color: 'var(--retro-orange)',fontSize: '3.5rem'}}>Engineer</h2>
         <div className="retro-stripes" style={{ maxWidth: '500px', margin: '0 auto 20px' }}></div>
-        <h2 style={{ color: 'var(--retro-orange)' }}>Mechanical Engineer | Maker | Innovator</h2>
         <p style={{ maxWidth: '600px', margin: '20px auto', fontSize: '1.2rem' }}>
           Multidisciplinary engineer specializing in mechatronics, automation, and full-cycle product development.
           Expert in CNC machining, lithium battery design, and rapid prototyping.
