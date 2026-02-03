@@ -1,0 +1,90 @@
+:root {
+  --retro-brown: #2d1b0e;
+  --retro-orange: #d35400;
+  --retro-yellow: #f39c12;
+  --retro-tan: #f5e6d3;
+  --retro-cream: #fffdf5;
+  --retro-dark: #1a1a1a;
+  --font-heading: 'Courier New', Courier, monospace; /* Retro Tech feel */
+  --font-body: 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--retro-cream);
+  color: var(--retro-brown);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+/* The Cool 80s Stripes Class */
+.retro-stripes {
+  height: 30px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--retro-brown) 20%,
+    var(--retro-orange) 20%,
+    var(--retro-orange) 40%,
+    var(--retro-yellow) 40%,
+    var(--retro-yellow) 60%,
+    var(--retro-tan) 60%,
+    var(--retro-tan) 80%,
+    transparent 80%
+  );
+  margin: 10px 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-retro {
+  display: inline-block;
+  background: var(--retro-orange);
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  border-bottom: 4px solid var(--retro-brown);
+  transition: all 0.2s;
+}
+
+.btn-retro:hover {
+  background: var(--retro-brown);
+  transform: translateY(2px);
+  border-bottom: 2px solid var(--retro-dark);
+}
+
+/* Navbar Styles */
+nav {
+  background-color: var(--retro-brown);
+  padding: 1rem 0;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+nav a {
+  color: var(--retro-tan);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+nav a:hover {
+  color: var(--retro-yellow);
+}
