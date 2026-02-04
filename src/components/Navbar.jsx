@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { ChevronDown } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const closeTimeoutRef = useRef(null);
 
   // Match the logo box: burgundy background, tan border, orange shadow
   const navLinkStyle = {
@@ -28,29 +29,45 @@ export default function Navbar() {
   const dropdownStyle = {
     position: 'absolute',
     top: '100%',
-    right: '0',
+    left: '0',
     backgroundColor: 'var(--retro-cream)',
     border: '3px solid var(--retro-burgundy)',
     padding: '10px 0',
     listStyle: 'none',
     minWidth: '240px',
     boxShadow: '4px 8px 0px rgba(0,0,0,0.2)',
-    zIndex: 1001
+    zIndex: 1001,
+    marginTop: '8px'
+  };
+
+  const stripes = [
+    { color: 'var(--retro-blue)', yLow: 37, yHigh: 7 },
+    { color: 'var(--retro-burgundy)', yLow: 49, yHigh: 19 },
+    { color: 'var(--retro-orange)', yLow: 61, yHigh: 31 },
+    { color: 'var(--retro-yellow)', yLow: 73, yHigh: 43 },
+    { color: 'var(--retro-tan)', yLow: 85, yHigh: 55 }
+  ];
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 300); // 300ms delay
+  };
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    setIsOpen(true);
   };
 
   return (
-    <nav style={{ backgroundColor: 'var(--retro-burgundy)', position: 'sticky', top: 0, zIndex: 1000, height: '100px', overflow: 'hidden' }}>
+    <nav style={{ backgroundColor: 'var(--retro-burgundy)', position: 'sticky', top: 0, zIndex: 1000, height: '100px' }}>
       
       {/* Decorative SVG stripes (pointer-events none so links are clickable) */}
       <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, pointerEvents: 'none' }}>
         <svg width="100%" height="100" preserveAspectRatio="none" viewBox="0 0 1000 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {[
-            { color: 'var(--retro-blue)', yLow: 37, yHigh: 7 },
-            { color: 'var(--retro-burgundy)', yLow: 49, yHigh: 19 },
-            { color: 'var(--retro-orange)', yLow: 61, yHigh: 31 },
-            { color: 'var(--retro-yellow)', yLow: 73, yHigh: 43 },
-            { color: 'var(--retro-tan)', yLow: 85, yHigh: 55 }
-          ].map((stripe, i) => (
+          {stripes.map((stripe, i) => (
             <path 
               key={i}
               d={`M0 ${stripe.yLow} L380 ${stripe.yLow} L420 ${stripe.yHigh} L1000 ${stripe.yHigh}`} 
@@ -116,7 +133,10 @@ export default function Navbar() {
             </Link>
           </li>
           
-          <li onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} style={{ position: 'relative', height: 'auto' }}>
+          <li 
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{ position: 'relative' }}>
             <div style={{ ...navLinkStyle, cursor: 'pointer', gap: '8px' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
@@ -131,11 +151,16 @@ export default function Navbar() {
               PROJECTS <ChevronDown size={14} />
             </div>
             {isOpen && (
-              <ul style={dropdownStyle}>
+              <ul 
+                style={dropdownStyle}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}>
                 {projects.map((p) => (
                   <li key={p.id}>
                     <Link to={`/project/${p.id}`} 
-                      style={{ display: 'block', padding: '12px 20px', color: 'var(--retro-text)', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'var(--font-heading)', fontSize: '0.9rem' }} 
+                      style={{ display: 'block', padding: '12px 20px', color: 'var(--retro-burgundy)', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'var(--font-heading)', fontSize: '0.9rem', transition: 'background-color 0.15s' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-tan)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-cream)'}
                       onClick={() => setIsOpen(false)}>
                       {p.title}
                     </Link>

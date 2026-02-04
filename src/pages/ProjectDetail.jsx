@@ -1,59 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '../data/projects';
-import * as pdfjsLib from 'pdfjs-dist';
-
-// Set up PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 const PDFViewer = ({ pdfPath }) => {
-  const [numPages, setNumPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pdf, setPdf] = useState(null);
-  const [canvas, setCanvas] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-    pdfjsLib.getDocument(pdfPath).promise
-      .then((pdfDoc) => {
-        setPdf(pdfDoc);
-        setNumPages(pdfDoc.numPages);
-        setCurrentPage(1);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(`Error loading PDF: ${err.message}`);
-        setLoading(false);
-      });
-  }, [pdfPath]);
-
-  useEffect(() => {
-    if (pdf && canvas) {
-      pdf.getPage(currentPage).then((page) => {
-        const context = canvas.getContext('2d');
-        const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for landscape
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        page.render({ canvasContext: context, viewport });
-      });
-    }
-  }, [pdf, currentPage, canvas]);
-
-  const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  const handleNext = () => {
-    if (currentPage < numPages) setCurrentPage(currentPage + 1);
-  };
-
-  if (loading) return <div style={{ padding: '40px', textAlign: 'center' }}>Loading PDF...</div>;
-  if (error) return <div style={{ padding: '40px', color: 'red' }}>{error}</div>;
-
   return (
     <div style={{ marginBottom: '80px' }}>
       <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-orange)', marginBottom: '20px' }}>
@@ -64,78 +14,18 @@ const PDFViewer = ({ pdfPath }) => {
         boxShadow: '12px 12px 0px var(--retro-yellow)',
         backgroundColor: '#f9f9f9',
         padding: '20px',
-        marginBottom: '20px',
-        overflowX: 'auto'
+        marginBottom: '20px'
       }}>
-        <canvas
-          ref={setCanvas}
+        <iframe
+          src={pdfPath}
           style={{
-            maxWidth: '100%',
-            height: 'auto',
-            display: 'block',
-            margin: '0 auto'
+            width: '100%',
+            height: '600px',
+            border: 'none',
+            borderRadius: '4px'
           }}
+          title="Technical Blueprints"
         />
-      </div>
-
-      {/* PDF Navigation Controls */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        gap: '20px'
-      }}>
-        <button
-          onClick={handlePrev}
-          disabled={currentPage === 1}
-          style={{
-            backgroundColor: currentPage === 1 ? '#ccc' : 'var(--retro-orange)',
-            color: 'white',
-            border: '3px solid var(--retro-burgundy)',
-            padding: '10px 20px',
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 'bold',
-            cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            textTransform: 'uppercase',
-            fontSize: '0.9rem'
-          }}
-        >
-          <ChevronLeft size={18} /> PREVIOUS
-        </button>
-
-        <div style={{
-          fontFamily: 'var(--font-heading)',
-          fontWeight: 'bold',
-          fontSize: '1.2rem',
-          color: 'var(--retro-burgundy)',
-          textAlign: 'center'
-        }}>
-          Page {currentPage} of {numPages}
-        </div>
-
-        <button
-          onClick={handleNext}
-          disabled={currentPage === numPages}
-          style={{
-            backgroundColor: currentPage === numPages ? '#ccc' : 'var(--retro-orange)',
-            color: 'white',
-            border: '3px solid var(--retro-burgundy)',
-            padding: '10px 20px',
-            fontFamily: 'var(--font-heading)',
-            fontWeight: 'bold',
-            cursor: currentPage === numPages ? 'not-allowed' : 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            textTransform: 'uppercase',
-            fontSize: '0.9rem'
-          }}
-        >
-          NEXT <ChevronRight size={18} />
-        </button>
       </div>
     </div>
   );
@@ -144,7 +34,7 @@ const PDFViewer = ({ pdfPath }) => {
 const ImageCarousel = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -187,7 +77,7 @@ const ImageCarousel = ({ images }) => {
         </>
       )}
       
-      {images[currentImageIndex].endsWith('.mp4') ? (
+      {images[currentImageIndex]?.endsWith?.('.mp4') ? (
         <video 
           src={images[currentImageIndex]} 
           className="carousel-slide" 
@@ -254,13 +144,14 @@ const StepsLayout = ({ project }) => (
           <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{project.steps[0].description}</p>
         </div>
         <div>
-          <ImageCarousel images={project.steps[0].images} />
+          {project.steps[0].showPDF && project.pdfPath ? (
+            <PDFViewer pdfPath={project.pdfPath} />
+          ) : (
+            <ImageCarousel images={project.steps[0].images} />
+          )}
         </div>
       </div>
     )}
-
-    {/* PDF Viewer in the middle */}
-    {project.pdfPath && <PDFViewer pdfPath={project.pdfPath} />}
 
     {/* Display remaining steps */}
     {project.steps?.slice(1).map((step, index) => (
