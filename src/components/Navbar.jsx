@@ -2,12 +2,56 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { ChevronDown } from 'lucide-react';
+import profilePic from '../assets/HomePagePhoto.jpg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const navLinkStyle = {
+    color: 'var(--retro-tan)',
+    textDecoration: 'none',
+    fontSize: '0.85rem', 
+    fontFamily: 'var(--font-heading)',
+    fontWeight: 'bold',
+    letterSpacing: '1.5px',
+    textTransform: 'uppercase',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+    display: 'flex',        // Make ALL links flex so they align with "Projects"
+    alignItems: 'center',   // Vertically center text
+    height: '100%'          // Fill the height
+  };
+
+  const dropdownStyle = {
+    position: 'absolute',
+    top: '100%',     // Starts right at the bottom of the nav item
+    right: '0',
+    backgroundColor: 'var(--retro-cream)',
+    border: '3px solid var(--retro-burgundy)',
+    padding: '10px 0', // Moved padding inside
+    listStyle: 'none',
+    minWidth: '240px',
+    boxShadow: '4px 8px 0px rgba(0,0,0,0.2)',
+    marginTop: '0px', // FIXED: Removed the 24px gap so it doesn't close on hover
+    zIndex: 1001
+  };
+
+  const dropdownLinkStyle = {
+    display: 'block',
+    padding: '12px 20px',
+    color: 'var(--retro-text)', // Dark text on cream background
+    textDecoration: 'none',
+    fontSize: '0.75rem',
+    letterSpacing: '1px',
+    fontFamily: 'var(--font-heading)',
+    fontWeight: 'bold',
+    borderBottom: '1px solid var(--retro-tan)',
+    transition: 'all 0.2s',
+    textTransform: 'uppercase',
+  };
+
   return (
-    <nav className="nav-retro" style={{ position: 'sticky', top: 0, zIndex: 1000 }}>
+    <nav className="nav-retro">
       <div className="container" style={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
@@ -20,26 +64,14 @@ export default function Navbar() {
         <Link to="/" style={{ 
           textDecoration: 'none', 
           color: 'var(--retro-tan)',
-          fontSize: '0.95rem',
+          fontSize: '1.1rem',
           fontFamily: 'var(--font-heading)',
           fontWeight: 'bold',
           border: '2px solid var(--retro-tan)',
-          padding: '6px 14px',
+          padding: '8px 16px',
           letterSpacing: '2px',
           transition: 'all 0.3s ease',
           textTransform: 'uppercase'
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.backgroundColor = 'var(--retro-orange)';
-          e.target.style.color = 'white';
-          e.target.style.borderColor = 'var(--retro-orange)';
-          e.target.style.boxShadow = '0 0 12px rgba(211, 84, 0, 0.5)';
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.backgroundColor = 'transparent';
-          e.target.style.color = 'var(--retro-tan)';
-          e.target.style.borderColor = 'var(--retro-tan)';
-          e.target.style.boxShadow = 'none';
         }}>
           MILO CLAYDON
         </Link>
@@ -51,18 +83,20 @@ export default function Navbar() {
           listStyle: 'none', 
           margin: 0, 
           padding: 0,
-          alignItems: 'center'
+          alignItems: 'center',
+          height: '100%' // Ensure ul fills height
         }}>
-          <li><Link to="/" className="nav-retro-item" style={navLinkStyle}>HOME</Link></li>
-          <li><Link to="/machining" className="nav-retro-item" style={navLinkStyle}>MANUFACTURING</Link></li>
+          <li><Link to="/" style={navLinkStyle}>HOME</Link></li>
+          <li><Link to="/machining" style={navLinkStyle}>MANUFACTURING</Link></li>
           
           <li 
             onMouseEnter={() => setIsOpen(true)} 
             onMouseLeave={() => setIsOpen(false)}
-            style={{ position: 'relative' }}
+            style={{ position: 'relative', height: '100%', display: 'flex', alignItems: 'center' }}
           >
-            <div className="nav-retro-item" style={{ ...navLinkStyle, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}>
-              PROJECTS <ChevronDown size={14} strokeWidth={3} />
+            {/* Added padding top/bottom to this div to bridge any tiny gaps */}
+            <div style={{ ...navLinkStyle, gap: '6px' }}>
+              PROJECTS <ChevronDown size={16} strokeWidth={3} />
             </div>
 
             {isOpen && (
@@ -78,55 +112,10 @@ export default function Navbar() {
             )}
           </li>
           
-          <li><Link to="/contact" className="nav-retro-item" style={navLinkStyle}>CONTACT</Link></li>
+          <li><Link to="/contact" style={navLinkStyle}>CONTACT</Link></li>
         </ul>
       </div>
-      {/* The 80s Geometric Stripe at the bottom of the nav */}
       <div className="nav-stripe"></div>
     </nav>
   );
 }
-
-const navLinkStyle = {
-  color: 'var(--retro-tan)',
-  textDecoration: 'none',
-  fontSize: '0.75rem',
-  fontFamily: 'var(--font-heading)',
-  fontWeight: 'bold',
-  letterSpacing: '1.5px',
-  textTransform: 'uppercase',
-  transition: 'all 0.3s ease',
-  position: 'relative',
-  cursor: 'pointer',
-  paddingBottom: '4px',
-  borderBottom: '2px solid transparent'
-};
-
-const dropdownStyle = {
-  position: 'absolute',
-  top: '100%',
-  right: '0',
-  backgroundColor: 'var(--retro-cream)',
-  border: '3px solid var(--retro-blue)',
-  padding: '0',
-  listStyle: 'none',
-  minWidth: '240px',
-  boxShadow: '4px 8px 0px rgba(0,0,0,0.15)',
-  marginTop: '24px',
-  zIndex: 1001
-};
-
-const dropdownLinkStyle = {
-  display: 'block',
-  padding: '12px 18px',
-  color: 'var(--retro-brown)',
-  textDecoration: 'none',
-  fontSize: '0.75rem',
-  letterSpacing: '1px',
-  fontFamily: 'var(--font-heading)',
-  fontWeight: 'bold',
-  borderBottom: '1px solid var(--retro-tan)',
-  transition: 'all 0.2s',
-  textTransform: 'uppercase',
-  backgroundColor: 'transparent'
-};

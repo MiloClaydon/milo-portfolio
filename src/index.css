@@ -1,11 +1,19 @@
 :root {
-  --retro-brown: #2d1b0e;
+  /* --- NEW COLOR PALETTE --- */
+  /* Replaced the dark brown/black with a deep burgundy for contrast */
+  --retro-burgundy: #5a1f1f;
+  /* Added a muted retro blue/teal */
+  --retro-blue: #3b7a8a;
+  /* Existing warm colors (Dominant) */
   --retro-orange: #d35400;
   --retro-yellow: #f39c12;
   --retro-tan: #f5e6d3;
   --retro-cream: #fffdf5;
-  --retro-dark: #1a1a1a;
-  --font-heading: 'Courier New', Courier, monospace; /* Retro Tech feel */
+  
+  /* Main text color - soft warm dark brown */
+  --retro-text: #2d1b0e; 
+
+  --font-heading: 'Courier New', Courier, monospace;
   --font-body: 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -13,7 +21,7 @@ body {
   margin: 0;
   font-family: var(--font-body);
   background-color: var(--retro-cream);
-  color: var(--retro-brown);
+  color: var(--retro-text); /* Updated text color */
   line-height: 1.6;
 }
 
@@ -21,113 +29,256 @@ h1, h2, h3, h4 {
   font-family: var(--font-heading);
   text-transform: uppercase;
   letter-spacing: -1px;
+  color: var(--retro-burgundy); /* Headings pop with burgundy now */
 }
 
-/* The Cool 80s Stripes Class */
-.retro-stripes {
-  height: 30px;
+/* --- UPDATED STRIPES (New Color Scheme) --- */
+/* This replaces your old .retro-stripes class */
+.retro-stripes-horizontal {
+  height: 24px; /* Slightly thinner for elegance */
   width: 100%;
+  margin: 20px 0;
   background: linear-gradient(
     to bottom,
-    var(--retro-brown) 20%,
-    var(--retro-orange) 20%,
-    var(--retro-orange) 40%,
-    var(--retro-yellow) 40%,
-    var(--retro-yellow) 60%,
-    var(--retro-tan) 60%,
-    var(--retro-tan) 80%,
-    transparent 80%
+    var(--retro-blue) 0%, var(--retro-blue) 15%,
+    var(--retro-burgundy) 15%, var(--retro-burgundy) 30%,
+    var(--retro-orange) 30%, var(--retro-orange) 55%, /* Orange is dominant */
+    var(--retro-yellow) 55%, var(--retro-yellow) 75%,
+    var(--retro-tan) 75%, var(--retro-tan) 100%
   );
-  margin: 10px 0;
+  /* Adds a retro hard-edge shadow */
+  box-shadow: 4px 4px 0px rgba(211, 84, 0, 0.2);
 }
 
+/* Nav stripe updated to match new colors */
+.nav-stripe {
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--retro-blue) 0%, var(--retro-blue) 10%,
+    var(--retro-burgundy) 10%, var(--retro-burgundy) 20%,
+    var(--retro-orange) 20%, var(--retro-orange) 40%,
+    var(--retro-yellow) 40%, var(--retro-yellow) 60%,
+    var(--retro-orange) 60%, var(--retro-orange) 80%,
+    var(--retro-burgundy) 80%, var(--retro-burgundy) 90%,
+    var(--retro-blue) 90%, var(--retro-blue) 100%
+  );
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+
+/* --- LAYOUT & UTILITIES --- */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* New Hero Split Layout */
+.hero-split {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 80px 0;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+/* Wrapper for the photo to handle positioning and stripes */
+.hero-photo-wrapper {
+  flex: 1;
+  position: relative;
+  max-width: 450px;
+}
+
+/* The actual image styling */
+.hero-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border: 4px solid var(--retro-cream);
+  /* A hard retro shadow behind the photo */
+  box-shadow: 12px 12px 0px var(--retro-burgundy);
+}
+
+/* Decorative stripe BEHIND the photo (Top Right) */
+.hero-photo-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 80%;
+    height: 150px;
+    z-index: 1;
+    /* Using the new color pattern */
+    background: linear-gradient(
+      to bottom,
+      var(--retro-blue) 15%,
+      var(--retro-burgundy) 15%, var(--retro-burgundy) 30%,
+      var(--retro-orange) 30%, var(--retro-orange) 60%,
+      var(--retro-yellow) 60%
+    );
+}
+/* Decorative stripe IN FRONT of photo (Bottom Left) */
+.hero-photo-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    left: -35px;
+    width: 60%;
+    height: 40px;
+    z-index: 3;
+     background: linear-gradient(
+      to bottom,
+      var(--retro-orange) 30%,
+      var(--retro-yellow) 30%, var(--retro-yellow) 60%,
+      var(--retro-tan) 60%
+    );
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+}
+
+/* Keep existing button styles */
 .btn-retro {
   display: inline-block;
   background: var(--retro-orange);
   color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-family: var(--font-heading);
-  font-weight: bold;
-  border-bottom: 4px solid var(--retro-brown);
-  transition: all 0.2s;
-}
-
-.btn-retro:hover {
-  background: var(--retro-brown);
-  transform: translateY(2px);
-  border-bottom: 2px solid var(--retro-dark);
-}
-
-/* Navbar Styles */
-nav {
-  background-color: var(--retro-brown);
-  padding: 1rem 0;
-}
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-nav a {
-  color: var(--retro-tan);
+  padding: 12px 28px;
   text-decoration: none;
   font-family: var(--font-heading);
   font-weight: bold;
   font-size: 1.1rem;
-}
-nav a:hover {
-  color: var(--retro-yellow);
-}
-/* Retro 80s Navbar Styles */
-.nav-retro {
-  background-color: var(--retro-brown);
-  box-shadow: 0 4px 0 var(--retro-orange);
-  padding: 0;
+  letter-spacing: 1px;
+  border-bottom: 4px solid var(--retro-burgundy); /* Changed border color */
+  transition: all 0.2s;
 }
 
+.btn-retro:hover {
+  background: var(--retro-burgundy);
+  transform: translateY(2px);
+  border-bottom: 2px solid var(--retro-text);
+}
+
+/* Responsive adjust for hero */
+@media (max-width: 768px) {
+  .hero-split {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 40px;
+    padding: 40px 0;
+  }
+  .hero-photo-wrapper {
+      margin: 0 auto 30px;
+      max-width: 90%;
+  }
+}
+.nav-retro {
+  background-color: var(--retro-burgundy); /* Fixed: Was missing background */
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Ensure links are visible */
 .nav-retro-item {
-  position: relative;
-  padding-bottom: 6px;
-  border-bottom: 2px solid transparent;
+  color: var(--retro-tan) !important; /* Force tan text for contrast */
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   transition: all 0.3s ease;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-retro-item:hover {
   color: var(--retro-yellow) !important;
-  border-bottom-color: var(--retro-orange);
-  text-shadow: 0 0 8px rgba(211, 84, 0, 0.3);
+  text-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
+}
+/* --- MANUFACTURING PAGE SPECIFIC --- */
+
+.process-section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 100px 0;
+  position: relative;
 }
 
-.nav-stripe {
-  height: 8px;
-  background: linear-gradient(
-    to right,
-    var(--retro-brown) 0%,
-    var(--retro-brown) 20%,
-    var(--retro-orange) 20%,
-    var(--retro-orange) 40%,
-    var(--retro-yellow) 40%,
-    var(--retro-yellow) 60%,
-    var(--retro-tan) 60%,
-    var(--retro-tan) 80%,
-    var(--retro-brown) 80%,
-    var(--retro-brown) 100%
-  );
+.process-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.process-text {
+  flex: 1;
+}
+
+/* The Carousel Container */
+.carousel-container {
+  flex: 1.2;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 6px solid var(--retro-burgundy);
+  box-shadow: 15px 15px 0px var(--retro-orange);
+  overflow: hidden;
+  background: #000;
+}
+
+.carousel-slide {
   width: 100%;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.8s ease-in-out;
 }
 
-/* Dropdown hover effect */
-.nav-retro-item:hover {
-  transform: translateY(-2px);
+/* Retro Carousel Arrows */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--retro-yellow);
+  border: 2px solid var(--retro-burgundy);
+  color: var(--retro-burgundy);
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  box-shadow: 3px 3px 0px var(--retro-burgundy);
+}
+
+.carousel-btn:hover {
+  background: var(--retro-orange);
+  color: white;
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* Decorative "Hockey Stick" Stripe for Sections */
+.hockey-stick-decorator {
+  height: 60px;
+  width: 150px;
+  border-left: 20px solid var(--retro-blue);
+  border-bottom: 20px solid var(--retro-blue);
+  position: absolute;
+  bottom: -30px;
+  left: -40px;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .process-section, .process-section.reverse {
+    flex-direction: column;
+    padding: 50px 0;
+    gap: 30px;
+  }
 }
