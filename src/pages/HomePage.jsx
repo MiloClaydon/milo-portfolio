@@ -14,18 +14,18 @@ export default function Home() {
             MILO<br />CLAYDON
           </h1>
           <h2 style={{ color: 'var(--retro-orange)', fontSize: '2.5rem', margin: '10px 0 25px 0' }}>
-            Engineer & Maker
+            Engineer
           </h2>
           
           <p style={{ maxWidth: '500px', fontSize: '1.3rem', marginBottom: '35px', fontWeight: '500' }}>
-            I'm an engineer who likes to get my hands dirty. Whether it's automating a complex process, designing custom lithium battery packs, or running the CNC, I take ideas from a napkin sketch to a finished prototype.
+            I always like having a project. Whether it's designing a new part, optimizing a process, or learning a new skill, I thrive on challenges that push me to think creatively and technically. Here are some of the things I've been working on.
           </p>
           
-          <a href="/contact" className="btn-retro">LET'S BUILD SOMETHING</a>
+          <a href="/contact" className="btn-retro">REACH OUT</a>
         </div>
 
-        {/* Right Side: Photo & Stripes Wrapper */}
-        <div className="hero-photo-wrapper">
+        {/* Right Side: Photo (plain container — no decorative stripes) */}
+        <div style={{ flex: 1, maxWidth: 450 }}>
           <img src={miloPhoto} alt="Milo Claydon sitting by a canal" className="hero-photo" />
         </div>
       </section>
@@ -36,7 +36,7 @@ export default function Home() {
       {/* Project Gallery */}
       <section style={{ marginBottom: '80px' }}>
         <h2 style={{ borderBottom: '4px solid var(--retro-burgundy)', display: 'inline-block', color: 'var(--retro-orange)' }}>
-          Selected Work
+          Selected Projects
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '40px', marginTop: '40px' }}>
           {projects.map((project) => (
