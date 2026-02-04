@@ -5,27 +5,37 @@ import { projects } from '../data/projects';
 import * as pdfjsLib from 'pdfjs-dist';
 
 // Set up PDF.js worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 const PDFViewer = ({ pdfPath }) => {
   const [numPages, setNumPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [pdf, setPdf] = useState(null);
   const [canvas, setCanvas] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    pdfjsLib.getDocument(pdfPath).promise.then((pdfDoc) => {
-      setPdf(pdfDoc);
-      setNumPages(pdfDoc.numPages);
-      setCurrentPage(1);
-    });
+    setLoading(true);
+    setError(null);
+    pdfjsLib.getDocument(pdfPath).promise
+      .then((pdfDoc) => {
+        setPdf(pdfDoc);
+        setNumPages(pdfDoc.numPages);
+        setCurrentPage(1);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(`Error loading PDF: ${err.message}`);
+        setLoading(false);
+      });
   }, [pdfPath]);
 
   useEffect(() => {
     if (pdf && canvas) {
       pdf.getPage(currentPage).then((page) => {
         const context = canvas.getContext('2d');
-        const viewport = page.getViewport({ scale: 2 });
+        const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for landscape
         canvas.width = viewport.width;
         canvas.height = viewport.height;
         page.render({ canvasContext: context, viewport });
@@ -41,6 +51,9 @@ const PDFViewer = ({ pdfPath }) => {
     if (currentPage < numPages) setCurrentPage(currentPage + 1);
   };
 
+  if (loading) return <div style={{ padding: '40px', textAlign: 'center' }}>Loading PDF...</div>;
+  if (error) return <div style={{ padding: '40px', color: 'red' }}>{error}</div>;
+
   return (
     <div style={{ marginBottom: '80px' }}>
       <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-orange)', marginBottom: '20px' }}>
@@ -51,12 +64,13 @@ const PDFViewer = ({ pdfPath }) => {
         boxShadow: '12px 12px 0px var(--retro-yellow)',
         backgroundColor: '#f9f9f9',
         padding: '20px',
-        marginBottom: '20px'
+        marginBottom: '20px',
+        overflowX: 'auto'
       }}>
         <canvas
           ref={setCanvas}
           style={{
-            width: '100%',
+            maxWidth: '100%',
             height: 'auto',
             display: 'block',
             margin: '0 auto'
@@ -225,22 +239,44 @@ const SingleLayout = ({ project }) => (
 // Steps Layout Component
 const StepsLayout = ({ project }) => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginTop: '40px' }}>
-    {project.pdfPath && <PDFViewer pdfPath={project.pdfPath} />}
-    
-    {project.steps?.map((step, index) => (
-      <div key={index} style={{ 
+    {/* Display only first step */}
+    {project.steps && project.steps[0] && (
+      <div style={{ 
         display: 'grid', 
-        gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', 
+        gridTemplateColumns: '1fr 1.2fr', 
         gap: '60px', 
         alignItems: 'center' 
       }}>
-        <div style={{ order: index % 2 === 0 ? 1 : 2 }}>
+        <div>
           <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
-            0{index + 1}. {step.title}
+            01. {project.steps[0].title}
+          </h2>
+          <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{project.steps[0].description}</p>
+        </div>
+        <div>
+          <ImageCarousel images={project.steps[0].images} />
+        </div>
+      </div>
+    )}
+
+    {/* PDF Viewer in the middle */}
+    {project.pdfPath && <PDFViewer pdfPath={project.pdfPath} />}
+
+    {/* Display remaining steps */}
+    {project.steps?.slice(1).map((step, index) => (
+      <div key={index + 1} style={{ 
+        display: 'grid', 
+        gridTemplateColumns: (index + 1) % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', 
+        gap: '60px', 
+        alignItems: 'center' 
+      }}>
+        <div style={{ order: (index + 1) % 2 === 0 ? 1 : 2 }}>
+          <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
+            0{index + 2}. {step.title}
           </h2>
           <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
         </div>
-        <div style={{ order: index % 2 === 0 ? 2 : 1 }}>
+        <div style={{ order: (index + 1) % 2 === 0 ? 2 : 1 }}>
           <ImageCarousel images={step.images} />
         </div>
       </div>
