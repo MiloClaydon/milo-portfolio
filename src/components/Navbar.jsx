@@ -121,22 +121,6 @@ export default function Navbar() {
             </Link>
           </li>
           
-          <li>
-            <Link to="/machining" style={navLinkStyle}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
-                e.currentTarget.style.color = 'white';
-                e.currentTarget.style.boxShadow = '6px 6px 0px rgba(90,31,31,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--retro-burgundy)';
-                e.currentTarget.style.color = 'var(--retro-tan)';
-                e.currentTarget.style.boxShadow = '4px 4px 0px var(--retro-orange)';
-              }}>
-              MANUFACTURING
-            </Link>
-          </li>
-          
           <li 
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
@@ -184,6 +168,22 @@ export default function Navbar() {
                 ))}
               </ul>
             )}
+          </li>
+
+          <li>
+            <Link to="/machining" style={navLinkStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.boxShadow = '6px 6px 0px rgba(90,31,31,0.2)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--retro-burgundy)';
+                e.currentTarget.style.color = 'var(--retro-tan)';
+                e.currentTarget.style.boxShadow = '4px 4px 0px var(--retro-orange)';
+              }}>
+              MANUFACTURING
+            </Link>
           </li>
 
           <li>

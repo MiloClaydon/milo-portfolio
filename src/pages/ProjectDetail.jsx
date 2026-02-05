@@ -1,201 +1,49 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '../data/projects';
-
-const PDFViewer = ({ pdfPath }) => {
-  return (
-    <div style={{ marginBottom: '80px' }}>
-      <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-orange)', marginBottom: '20px' }}>
-        TECHNICAL BLUEPRINTS
-      </h3>
-      <div style={{
-        border: '10px solid var(--retro-burgundy)',
-        boxShadow: '12px 12px 0px var(--retro-yellow)',
-        backgroundColor: '#f9f9f9',
-        padding: '20px',
-        marginBottom: '20px'
-      }}>
-        <iframe
-          src={pdfPath}
-          style={{
-            width: '100%',
-            height: '600px',
-            border: 'none',
-            borderRadius: '4px'
-          }}
-          title="Technical Blueprints"
-        />
-      </div>
-    </div>
-  );
-};
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ImageCarousel = ({ images }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  React.useEffect(() => {
-    if (!images || images.length <= 1) return;
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 15000);
-    return () => clearInterval(timer);
-  }, [images]);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % (images?.length || 1));
+    setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
   const handlePrev = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + (images?.length || 1)) % (images?.length || 1));
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
-  if (!images || images.length === 0) {
-    return (
-      <div className="carousel-container">
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-          color: '#999',
-          fontSize: '1.1rem'
-        }}>
-          [Image Gallery Coming Soon]
-        </div>
+  if (!images || images.length === 0) return null;
+
+  const file = images[currentIndex];
+
+  return (
+    <div style={{ position: 'relative' }}>
+      <div className="carousel-container" style={{
+        background: 'linear-gradient(to bottom, var(--retro-blue) 0% 15%, var(--retro-burgundy) 15% 30%, var(--retro-orange) 30% 60%, var(--retro-yellow) 60% 85%, var(--retro-tan) 85% 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        {images.length > 1 && (
+          <>
+            <button className="carousel-btn prev" onClick={handlePrev}><ChevronLeft /></button>
+            <button className="carousel-btn next" onClick={handleNext}><ChevronRight /></button>
+          </>
+        )}
+        
+        {file && file.endsWith('.mp4') ? (
+          <video src={file} controls style={{ width: '100%', height: '100%', objectFit: 'contain' }} autoPlay loop muted playsInline />
+        ) : (
+          <img src={file} alt="Project media" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        )}
         <div className="hockey-stick-decorator"></div>
       </div>
-    );
-  }
-
-  return (
-    <div className="carousel-container">
       {images.length > 1 && (
-        <>
-          <button className="carousel-btn prev" onClick={handlePrev}><ChevronLeft /></button>
-          <button className="carousel-btn next" onClick={handleNext}><ChevronRight /></button>
-        </>
-      )}
-      
-      {images[currentImageIndex]?.endsWith?.('.mp4') ? (
-        <video 
-          src={images[currentImageIndex]} 
-          className="carousel-slide" 
-          autoPlay loop muted playsInline 
-        />
-      ) : (
-        <img 
-          src={images[currentImageIndex]} 
-          alt="Project media" 
-          className="carousel-slide" 
-        />
-      )}
-      
-      <div className="hockey-stick-decorator"></div>
-    </div>
-  );
-};
-
-// Single Layout Component
-const SingleLayout = ({ project }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '40px', marginTop: '40px' }}>
-    {/* Left Column: Story & Images */}
-    <div>
-      <ImageCarousel images={project.images} />
-      
-      <h3 style={{ marginTop: '30px' }}>Project Brief</h3>
-      <p style={{ fontSize: '1.1rem' }}>{project.description}</p>
-      
-      <h3>Engineering Challenges</h3>
-      <p>{project.challenges || 'Detailed challenges coming soon...'}</p>
-    </div>
-
-    {/* Right Column: Specs */}
-    <div style={{ backgroundColor: 'white', padding: '20px', border: '2px solid var(--retro-brown)', height: 'fit-content' }}>
-      <h3 style={{ marginTop: 0, color: 'var(--retro-orange)' }}>Mission Data</h3>
-      <p><strong>Year:</strong> {project.year}</p>
-      <p><strong>Category:</strong> {project.category}</p>
-      <hr style={{ border: '1px dashed var(--retro-brown)' }}/>
-      <h4>Tech Stack:</h4>
-      <ul style={{ paddingLeft: '20px' }}>
-        {project.tech.map(t => <li key={t}>{t}</li>)}
-      </ul>
-      <hr style={{ border: '1px dashed var(--retro-brown)' }}/>
-      <button className="btn-retro" style={{ width: '100%' }}>DOWNLOAD CAD FILES</button>
-    </div>
-  </div>
-);
-
-// Steps Layout Component
-const StepsLayout = ({ project }) => {
-  const isWinder = project.id === 'filament-winder';
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginTop: '40px' }}>
-      {/* Display only first step */}
-      {project.steps && project.steps[0] && (
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: '1fr 1.2fr', 
-          gap: '60px', 
-          alignItems: 'center' 
-        }}>
-          <div>
-            <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
-              01. {project.steps[0].title}
-            </h2>
-            <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{project.steps[0].description}</p>
-          </div>
-          <div>
-            {project.steps[0].showPDF && project.pdfPath ? (
-              <PDFViewer pdfPath={project.pdfPath} />
-            ) : (
-              <ImageCarousel images={project.steps[0].images} />
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* Display remaining steps */}
-      {project.steps?.slice(1).map((step, index) => (
-        <div key={index + 1} style={{ 
-          display: 'grid', 
-          gridTemplateColumns: (index + 1) % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', 
-          gap: '60px', 
-          alignItems: 'center' 
-        }}>
-          <div style={{ order: (index + 1) % 2 === 0 ? 1 : 2 }}>
-            <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
-              0{index + 2}. {step.title}
-            </h2>
-            <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
-          </div>
-          <div style={{ order: (index + 1) % 2 === 0 ? 2 : 1 }}>
-            <ImageCarousel images={step.images} />
-          </div>
-        </div>
-      ))}
-
-      {/* Special winder video at bottom */}
-      {isWinder && (
-        <div style={{ marginTop: '60px' }}>
-          <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)', marginBottom: '30px' }}>
-            Full System in Action
-          </h2>
-          <div style={{
-            border: '10px solid var(--retro-burgundy)',
-            boxShadow: '12px 12px 0px var(--retro-yellow)',
-            overflow: 'hidden',
-            aspectRatio: '16/9'
-          }}>
-            <video 
-              src={project.steps[2]?.images?.[0]} 
-              className="carousel-slide"
-              controls
-              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-            />
-          </div>
-        </div>
+        <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '0.9rem', color: 'var(--retro-text)' }}>
+          {currentIndex + 1} / {images.length}
+        </p>
       )}
     </div>
   );
@@ -209,17 +57,69 @@ export default function ProjectDetail() {
 
   return (
     <div className="container" style={{ padding: '60px 0' }}>
-      <Link to="/" style={{ color: 'var(--retro-orange)', fontWeight: 'bold', textDecoration: 'none', fontSize: '0.9rem' }}>
-        &larr; RETURN TO MISSION CONTROL
+      <Link to="/" style={{ color: 'var(--retro-orange)', fontWeight: 'bold', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <ChevronLeft size={18} /> RETURN TO MISSION CONTROL
       </Link>
       
       <h1 style={{ fontSize: '3.5rem', margin: '20px 0', color: 'var(--retro-burgundy)' }}>{project.title}</h1>
-      <div className="retro-stripes-horizontal"></div>
 
-      {project.layout === 'steps' ? (
-        <StepsLayout project={project} />
-      ) : (
-        <SingleLayout project={project} />
+      {/* Steps Layout */}
+      {project.layout === 'steps' && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
+          {project.steps.map((step, index) => (
+            <div key={index} style={{ display: 'grid', gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
+              <div style={{ order: index % 2 === 0 ? 1 : 2 }}>
+                <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
+                <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
+              </div>
+              <div style={{ order: index % 2 === 0 ? 2 : 1 }}>
+                <ImageCarousel images={step.images} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Single Layout */}
+      {project.layout === 'single' && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+          <div>
+            <p style={{ fontSize: '1.4rem' }}>{project.description}</p>
+          </div>
+          <div>
+            {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
+          </div>
+        </div>
+      )}
+
+      {/* NEW: Technical Spec Sheet Section */}
+      {project.technicalSpecs && (
+        <div style={{ marginTop: '100px', padding: '40px', backgroundColor: '#e8e4d9', border: '4px solid var(--retro-burgundy)', boxShadow: '8px 8px 0px var(--retro-orange)' }}>
+          <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-burgundy)', fontSize: '1.8rem', borderBottom: '2px solid var(--retro-text)', paddingBottom: '10px', marginBottom: '20px' }}>
+            ENGINEERING SPECIFICATIONS & CHALLENGES
+          </h3>
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            {project.technicalSpecs.map((spec, index) => (
+              <li key={index} style={{ marginBottom: '15px', display: 'flex', alignItems: 'flex-start', fontSize: '1.1rem' }}>
+                <span style={{ color: 'var(--retro-orange)', marginRight: '15px', fontWeight: 'bold' }}>&#9658;</span>
+                {spec}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* PDF Viewer for Watch Project */}
+      {project.pdfPath && (
+        <div style={{ marginTop: '120px', marginBottom: '80px' }}>
+          <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-burgundy)', fontSize: '1.6rem', marginBottom: '10px' }}>CERTIFIED TECHNICAL DRAWINGS</h3>
+          <p style={{ fontSize: '1rem', color: 'var(--retro-text)', marginBottom: '20px', fontStyle: 'italic' }}>
+            Production-ready engineering drawings conforming to ASME Y14.5-2018 Geometric Dimensioning and Tolerancing standards. All critical surfaces, datum references, and functional tolerances are fully defined for CNC manufacturing.
+          </p>
+          <div style={{ border: '10px solid var(--retro-burgundy)', boxShadow: '12px 12px 0px var(--retro-yellow)', height: '800px', backgroundColor: '#222' }}>
+            <iframe src={`${project.pdfPath}#toolbar=0`} width="100%" height="100%" style={{ border: 'none' }} title="Technical Drawings" />
+          </div>
+        </div>
       )}
     </div>
   );
