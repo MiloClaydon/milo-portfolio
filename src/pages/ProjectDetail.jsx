@@ -127,53 +127,79 @@ const SingleLayout = ({ project }) => (
 );
 
 // Steps Layout Component
-const StepsLayout = ({ project }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginTop: '40px' }}>
-    {/* Display only first step */}
-    {project.steps && project.steps[0] && (
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: '1fr 1.2fr', 
-        gap: '60px', 
-        alignItems: 'center' 
-      }}>
-        <div>
-          <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
-            01. {project.steps[0].title}
-          </h2>
-          <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{project.steps[0].description}</p>
-        </div>
-        <div>
-          {project.steps[0].showPDF && project.pdfPath ? (
-            <PDFViewer pdfPath={project.pdfPath} />
-          ) : (
-            <ImageCarousel images={project.steps[0].images} />
-          )}
-        </div>
-      </div>
-    )}
+const StepsLayout = ({ project }) => {
+  const isWinder = project.id === 'filament-winder';
 
-    {/* Display remaining steps */}
-    {project.steps?.slice(1).map((step, index) => (
-      <div key={index + 1} style={{ 
-        display: 'grid', 
-        gridTemplateColumns: (index + 1) % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', 
-        gap: '60px', 
-        alignItems: 'center' 
-      }}>
-        <div style={{ order: (index + 1) % 2 === 0 ? 1 : 2 }}>
-          <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
-            0{index + 2}. {step.title}
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '100px', marginTop: '40px' }}>
+      {/* Display only first step */}
+      {project.steps && project.steps[0] && (
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr 1.2fr', 
+          gap: '60px', 
+          alignItems: 'center' 
+        }}>
+          <div>
+            <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
+              01. {project.steps[0].title}
+            </h2>
+            <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{project.steps[0].description}</p>
+          </div>
+          <div>
+            {project.steps[0].showPDF && project.pdfPath ? (
+              <PDFViewer pdfPath={project.pdfPath} />
+            ) : (
+              <ImageCarousel images={project.steps[0].images} />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Display remaining steps */}
+      {project.steps?.slice(1).map((step, index) => (
+        <div key={index + 1} style={{ 
+          display: 'grid', 
+          gridTemplateColumns: (index + 1) % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', 
+          gap: '60px', 
+          alignItems: 'center' 
+        }}>
+          <div style={{ order: (index + 1) % 2 === 0 ? 1 : 2 }}>
+            <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)' }}>
+              0{index + 2}. {step.title}
+            </h2>
+            <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
+          </div>
+          <div style={{ order: (index + 1) % 2 === 0 ? 2 : 1 }}>
+            <ImageCarousel images={step.images} />
+          </div>
+        </div>
+      ))}
+
+      {/* Special winder video at bottom */}
+      {isWinder && (
+        <div style={{ marginTop: '60px' }}>
+          <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block', color: 'var(--retro-burgundy)', marginBottom: '30px' }}>
+            Full System in Action
           </h2>
-          <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
+          <div style={{
+            border: '10px solid var(--retro-burgundy)',
+            boxShadow: '12px 12px 0px var(--retro-yellow)',
+            overflow: 'hidden',
+            aspectRatio: '16/9'
+          }}>
+            <video 
+              src={project.steps[2]?.images?.[0]} 
+              className="carousel-slide"
+              controls
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            />
+          </div>
         </div>
-        <div style={{ order: (index + 1) % 2 === 0 ? 2 : 1 }}>
-          <ImageCarousel images={step.images} />
-        </div>
-      </div>
-    ))}
-  </div>
-);
+      )}
+    </div>
+  );
+};
 
 export default function ProjectDetail() {
   const { id } = useParams();

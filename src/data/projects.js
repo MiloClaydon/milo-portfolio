@@ -53,29 +53,28 @@ export const projects = [
     id: "wristwatch",
     title: "Precision Wristwatch",
     category: "Machining",
-    summary: "Custom designed and manufactured mechanical wristwatch case.",
-    description: "A complete exercise in precision manufacturing. I designed and machined a custom wristwatch case, focusing on tight tolerances and surface finish. This project demonstrates high-level CNC and manual machining capabilities.",
-    tech: ["CAD", "CNC machining", "Manual machining", "Metrology", "GD&T"],
+    summary: "A deep dive into high-tolerance product design and stainless steel machining.",
+    description: "Inspired by my mentor, Mr. Rembacz, I set out to bridge the gap between 'ideal CAD' and 'real-world manufacturing.' This project was a 100+ hour masterclass in GD&T, CAM, and the stubborn reality of machining stainless steel.",
+    tech: ["SolidWorks", "CAM", "Tormach 1100MX", "Metrology", "DFM"],
     year: "2025",
-    challenges: "Maintaining tolerances within 0.01mm while working with hardened steel. The challenge was achieving a consistent mirror finish on the case while keeping the internal movement tolerances tight enough for reliable operation.",
+    challenges: "The primary technical hurdle was reconciling the micron-level tolerances in my CAD with the capabilities of a Tormach 1100MX. Stainless steel work-hardening required a complete redesign of the seals and geometry to ensure the part could be manufactured reliably without requiring impossible machine precision.",
     pdfPath: "/assets/watchdrawing.pdf",
     layout: "steps",
     steps: [
       {
-        title: "Design & CAD Modeling",
-        description: "Created detailed 3D models in SolidWorks with precise dimensions and GD&T callouts. Designed both the case back and front cover to hold the movement securely while maintaining aesthetic appeal.",
-        images: [],
-        showPDF: true
+        title: "The Design Challenge",
+        description: "I initially designed for tolerances that were theoretically perfect but practically impossible. This forced a major pivot: I redesigned the entire assembly for manufacturability (DFM), modifying seal locations so the watch would be bulletproof without needing a $500k machine.",
+        images: [WatchMilling1, WatchMilling2]
       },
       {
-        title: "CNC Programming & Machining",
-        description: "Generated G-code for the CNC mill and carefully programmed the toolpaths to machine the case from stainless steel blanks. Multiple setups required to achieve all features within tolerance.",
-        images: [Watch1, Watch2, Watch3, Watch4, WatchMilling1, WatchMilling2, WatchMilling3, WatchMilling4,CNCMilling1,CNCMilling2,CNCMilling3]
+        title: "Manufacturing & Metrology",
+        description: "Executing complex G-code on multiple setups. I learned that the secret to precision isn't just the tool—it's the manipulation of the process to account for tool wear and material deflection.",
+        images: [WatchMilling3, WatchMilling4, CNCMilling1, CNCMilling2, CNCMilling3]
       },
       {
-        title: "Finished Watch",
-        description: "Hand-finished all surfaces to achieve a mirror polish, assembled the case with the movement and tested for functionality and water resistance.",
-        images: [Watch5, Watch6]
+        title: "The Finished Piece",
+        description: "Wearing a piece of solid steel you machined yourself is a unique feeling. It isn't just jewelry; it's a working mechanical assembly that proves I can take an idea from a napkin sketch to a finished, waterproof product.",
+        images: [Watch1, Watch2, Watch3, Watch4]
       }
     ]
   },
@@ -83,27 +82,27 @@ export const projects = [
     id: "filament-winder",
     title: "Carbon Fiber Winder",
     category: "Automation",
-    summary: "4-axis filament winding machine for Space Concordia.",
-    description: "Co-lead on the design and fabrication of a 4-axis filament winding machine. This automated system is designed to manufacture carbon fiber rocket fuselage components for the Space Concordia team.",
-    tech: ["CAD", "Design", "Automation", "Coding", "Welding and fabrication", "Team skills", "Management"],
+    summary: "Turning a 3-day manual process into a 2-hour automated system for Space Concordia.",
+    description: "Space Concordia builds the most powerful student rocket engines in the world, but hand-laying the carbon fiber fuselage took 10 people three days. I co-led a team of six to build a 4-axis winder that slashed that time to just 2 hours with only two operators.",
+    tech: ["Python", "Mechatronics", "Structural Welding", "Automation", "NEMA 52 Servos"],
     year: "2025",
-    challenges: "Coordinating 4 axes simultaneously while maintaining consistent fiber tension and preventing buckling during the winding process.",
+    challenges: "We originally tried modifying an off-the-shelf winder, but the NEMA 17 motors were woefully underpowered for 60lbs of fiber tension. We had to scrap it and engineer a custom chassis with NEMA 52 servos, solving complex 4-axis synchronization issues in Python along the way.",
     layout: "steps",
     steps: [
       {
-        title: "Structural Design & Fabrication",
-        description: "Designed and welded the main frame using steel tubing. Incorporated precision mounting points for the four stepper motors and mandrel assembly. Used laser cutting for precision brackets.",
+        title: "The Problem: Scaling a Toy",
+        description: "The commercial machine was a toy—plastic wheels and tiny motors. We realized we needed a machine capable of winding 6 continuous tows of carbon fiber at high tension, which required a complete structural redesign using welded steel.",
         images: [buildingfilamentwinder, WeldedFoot1]
       },
       {
-        title: "Electronics & Control System",
-        description: "Integrated NEMA 23 stepper motors with CNC drivers. Developed Python control script that coordinates all 4 axes to create complex fiber winding patterns. Implemented real-time feedback from tension sensors.",
-        images: [wiringfilamentwinder, Winder1]
+        title: "Full-Stack Integration",
+        description: "I acted as a jack-of-all-trades: handling engineering calcs, structural welding, and writing the Python control logic. Debugging the 4-axis synchronization was the hardest part, but it sparked my interest in software development.",
+        images: [wiringfilamentwinder, Winder1, Winder2]
       },
       {
-        title: "Finished Product",
-        description: "The completed 4-axis filament winder in operation, demonstrating smooth and precise fiber laydown. The automated system successfully produces consistent carbon fiber components.",
-        images: [WinderVideo]
+        title: "Optimized Performance",
+        description: "By using continuous fiber tows instead of square sheets, we eliminated weak points and reduced the overall mass of the engine without sacrificing strength.",
+        images: [WinderVideo, Winder3]
       }
     ]
   },
@@ -111,67 +110,72 @@ export const projects = [
     id: "pottery-wheel",
     title: "Upcycled Pottery Wheel",
     category: "Mechatronics",
-    summary: "Built from a treadmill motor and laundry machine gearbox.",
-    description: "An engineering challenge in upcycling. I constructed a high-torque pottery wheel by repurposing a 2.25HP treadmill motor and mating it with a step-down gearbox salvaged from a washing machine. Includes custom speed control electronics.",
-    tech: ["Design", "Electronics", "Welding and fabrication", "Automation"],
+    summary: "A 20,000 RPM treadmill motor meets a salvaged laundry transmission.",
+    description: "When my girlfriend wanted to try pottery, I saw an opportunity for 'Frankenstein Engineering.' I salvaged a 2.25HP treadmill motor and mated it to a transmission from a 'broken' washing machine (which I discovered was actually just full of about 1,000 sewing needles).",
+    tech: ["Upcycling", "Power Electronics", "Mechanical Mating", "Fabrication"],
     year: "2023",
-    images: [Wheel1, ReefTank1],
-    challenges: "Matching the motor speed curve to pottery wheel requirements and creating a smooth speed control without vibration."
+    layout: "single",
+    challenges: "The main challenge was mechanical integration: mating a high-speed (20k RPM) motor to a low-speed application. The washing machine transmission provided a 20:1 reduction, allowing me to achieve high torque at low speeds without stalling.",
+    images: [Wheel1, ReefTank1]
+  },
+  {
+    id: "logic-voltmeter",
+    title: "Hard-Wired Logic Voltmeter",
+    category: "Electronics",
+    summary: "A digital voltmeter built from discrete logic gates—no microcontrollers allowed.",
+    description: "While most would reach for an Arduino, I wanted to understand the 'why' behind the digital display. I built this voltmeter using discrete logic chips to master circuit design from first principles.",
+    tech: ["Digital Logic", "Integrated Circuits", "PCB Design", "Circuit Analysis"],
+    year: "2023",
+    layout: "single",
+    challenges: "Avoiding the easy route (microcontrollers) meant I had to manually manage signal timing and logic states. It proved that for simple tasks, dedicated hardware logic is often more efficient and cheaper than a general-purpose processor.",
+    images: [Voltmeter1, Voltmeter2, Voltmeter3, Voltmeter4, Voltmeter5]
+  },
+  {
+    id: "foundry",
+    title: "Backyard Metallurgy",
+    category: "Fabrication",
+    summary: "A charcoal-powered foundry for casting aluminum and brass.",
+    description: "Built with my Grandpa, this foundry was a masterclass in 'scrappy engineering.' We used a concrete-lined metal can, a campfire blower for oxygen, and a section of a ship's mast as our crucible. We successfully cast a full aluminum chess set.",
+    tech: ["Sand Casting", "Pattern Making", "Anodizing", "Thermal Management"],
+    year: "2019",
+    layout: "single",
+    challenges: "Managing thermal gradients in a charcoal-fired system is difficult. We had to carefully control the blower speed and fuel mix to reach melting temps for brass without overheating the crucible or oxidizing the melt.",
+    images: [ClaydonBuilding, BuildingWithGrandpa]
+  },
+  {
+    id: "3d-printers",
+    title: "Custom 3D Printers",
+    category: "Additive Mfg",
+    summary: "From restoring broken machines to building high-speed Voron toolheads.",
+    description: "I don't just use printers; I engineer them. This project covers two distinct builds: the complete overhaul of a broken 'trash' printer into a reliable Klipper workhorse, and the assembly of a portable high-speed Voron V0.",
+    tech: ["Klipper", "Voron Design", "BigTreeTech", "Mechanical Design", "Remote Monitoring"],
+    year: "2024",
+    challenges: "The biggest technical leap was migrating to Klipper. It allowed me to offload processing to a Raspberry Pi, enabling complex motion planning and remote monitoring that standard firmware couldn't handle.",
+    layout: "steps",
+    steps: [
+      {
+        title: "The 'Ship of Theseus'",
+        description: "I bought a broken acrylic printer and replaced nearly every part. I designed a rigid aluminum frame, printed PETG brackets, and installed a BigTreeTech board. It went from a reliable failure to a remotely-monitored workhorse.",
+        images: [_3DPrinterBefore1, _3DPrinterBefore2, _3DPrinterBefore3, _3dprinting, Gridfinity1, _3dprintedgridfinity]
+      },
+      {
+        title: "Voron V0: Portable Precision",
+        description: "I needed a printer I could take to school for on-demand prototyping. This Voron V0 is tuned for speed and reliability, featuring auto-bed leveling and nozzle cleaning macros so I can print parts between classes.",
+        images: [Voron1, Voron2]
+      }
+    ]
   },
   {
     id: "battery-packs",
     title: "Lithium-Ion Battery Packs",
     category: "Energy",
     summary: "Custom e-bike batteries built with a DIY spot welder.",
-    description: "Designed and assembled custom Lithium-Ion battery packs for electric bikes. To build these safely, I first engineered and built a spot welder using a microwave oven transformer to weld the nickel strips to the 18650 cells (recycled from laptops).",
-    tech: ["Design", "Electronics", "Welding and fabrication", "Coding"],
+    description: "Designed and assembled custom Lithium-Ion battery packs for electric bikes. To build these safely, I first engineered and built a spot welder using a microwave oven transformer.",
+    tech: ["Design", "Electronics", "Welding", "Coding"],
     year: "2022",
-    images: [Voltmeter1, Voltmeter2, Voltmeter3],
-    challenges: "Achieving consistent weld strength without damaging the cells, and ensuring the BMS (Battery Management System) safely monitors all cells."
-  },
-  {
-    id: "foundry",
-    title: "Metal Foundry",
-    category: "Fabrication",
-    summary: "Backyard foundry for casting aluminum and brass parts.",
-    description: "Built a propane-powered metal foundry capable of melting aluminum and brass. Used for casting custom mechanical parts and prototyping components for other engineering projects.",
-    tech: ["Design", "Design for manufacturing", "Manual machining"],
-    year: "2019",
-    images: [ClaydonBuilding, BuildingWithGrandpa],
-    challenges: "Controlling melt temperature and pour rate to avoid defects like porosity and shrinkage in the final castings."
-  },
-  {
-    id: "3d-printers",
-    title: "Custom 3D Printers",
-    category: "Additive Mfg",
-    summary: "Heavily modified Prusa i3 & Klipper conversions.",
-    description: "I don't just use printers; I build them. My fleet includes a heavily modified acrylic Prusa i3 clone with a custom frame and print head. I also converted machines to run Klipper firmware, enabling wireless control, AI print failure detection, and high-speed printing.",
-    tech: ["CAD", "Design", "Electronics", "Coding", "Automation"],
-    year: "2024",
-    challenges: "Tuning Klipper firmware parameters for high-speed printing while maintaining dimensional accuracy and surface quality.",
-    layout: "steps",
-    steps: [
-      {
-        title: "Frame Assembly & Calibration",
-        description: "Built the Prusa i3 frame from aluminum extrusions and acrylic panels. Installed linear rails for smooth motion, calibrated XYZ axes to ensure perfect perpendicularity.",
-        images: [Gridfinity1, _3dprintedgridfinity]
-      },
-      {
-        title: "Extruder & Hot End Integration",
-        description: "Installed a Volcano hot end with custom cooling ducts for maximum cooling performance. Calibrated nozzle height and bed leveling for perfect first-layer adhesion.",
-        images: [_3dprinting]
-      },
-      {
-        title: "Klipper Firmware Installation",
-        description: "Flashed Raspberry Pi with Klipper firmware and connected to printer electronics via USB. Configured motion planning, thermistor calibration, and created custom macros for automated bed leveling.",
-        images: [_3DPrinterBefore1, _3DPrinterBefore2]
-      },
-      {
-        title: "Testing & Optimization",
-        description: "Ran numerous test prints with varying speeds and acceleration settings. Achieved 200mm/s print speeds while maintaining dimensional accuracy better than ±0.1mm.",
-        images: [_3DPrinterBefore3, _3dprinting]
-      }
-    ]
+    layout: "single",
+    challenges: "Achieving consistent weld strength without damaging the cells, and ensuring the BMS (Battery Management System) safely monitors all cells.",
+    images: []
   }
 ];
 

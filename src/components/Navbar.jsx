@@ -29,15 +29,19 @@ export default function Navbar() {
   const dropdownStyle = {
     position: 'absolute',
     top: '100%',
-    left: '0',
+    right: '0',
+    left: 'auto',
     backgroundColor: 'var(--retro-cream)',
     border: '3px solid var(--retro-burgundy)',
-    padding: '10px 0',
+    padding: '15px',
     listStyle: 'none',
-    minWidth: '240px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: '10px',
     boxShadow: '4px 8px 0px rgba(0,0,0,0.2)',
     zIndex: 1001,
-    marginTop: '8px'
+    marginTop: '8px',
+    minWidth: '600px'
   };
 
   const stripes = [
@@ -158,9 +162,21 @@ export default function Navbar() {
                 {projects.map((p) => (
                   <li key={p.id}>
                     <Link to={`/project/${p.id}`} 
-                      style={{ display: 'block', padding: '12px 20px', color: 'var(--retro-burgundy)', textDecoration: 'none', fontWeight: 'bold', fontFamily: 'var(--font-heading)', fontSize: '0.9rem', transition: 'background-color 0.15s' }}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-tan)'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-cream)'}
+                      style={{ 
+                        display: 'block', 
+                        padding: '12px 15px', 
+                        color: 'var(--retro-burgundy)', 
+                        textDecoration: 'none', 
+                        fontWeight: 'bold', 
+                        fontFamily: 'var(--font-heading)', 
+                        fontSize: '0.9rem', 
+                        transition: 'background-color 0.15s',
+                        border: '2px solid var(--retro-burgundy)',
+                        backgroundColor: 'var(--retro-tan)',
+                        textAlign: 'center'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-orange)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-tan)'}
                       onClick={() => setIsOpen(false)}>
                       {p.title}
                     </Link>
