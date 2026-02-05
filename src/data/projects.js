@@ -73,9 +73,9 @@ export const projects = [
         images: [Watch1, Watch2, Watch3, Watch4, WatchMilling1, WatchMilling2, WatchMilling3, WatchMilling4,CNCMilling1,CNCMilling2,CNCMilling3]
       },
       {
-        title: "Finishing & Assembly",
+        title: "Finished Watch",
         description: "Hand-finished all surfaces to achieve a mirror polish, assembled the case with the movement and tested for functionality and water resistance.",
-        images: [Watch1, Watch2]
+        images: [Watch5, Watch6]
       }
     ]
   },
@@ -99,6 +99,11 @@ export const projects = [
         title: "Electronics & Control System",
         description: "Integrated NEMA 23 stepper motors with CNC drivers. Developed Python control script that coordinates all 4 axes to create complex fiber winding patterns. Implemented real-time feedback from tension sensors.",
         images: [wiringfilamentwinder, Winder1]
+      },
+      {
+        title: "Finished Product",
+        description: "The completed 4-axis filament winder in operation, demonstrating smooth and precise fiber laydown. The automated system successfully produces consistent carbon fiber components.",
+        images: [WinderVideo]
       }
     ]
   },

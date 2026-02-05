@@ -15,7 +15,7 @@ export default function Footer() {
         <p style={{ color: 'var(--retro-tan)', margin: '8px 0' }}>miloclaydon@hotmail.com</p>
         <div style={{ marginTop: '30px' }}>
           <a 
-            href="https://www.linkedin.com/in/miloclaydon" 
+            href="https://ca.linkedin.com/in/miloclaydonengineering"
             target="_blank" 
             rel="noopener noreferrer"
             style={{ 
