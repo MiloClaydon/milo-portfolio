@@ -13,7 +13,6 @@ import CNCParts3 from '../assets/CNCParts3.jpg';
 import cncmillingmachine from '../assets/cncmillingmachine.jpg';
 import _3DPrinterBefore1 from '../assets/3DPrinterBefore1.jpg';
 import _3DPrinterBefore2 from '../assets/3DPrinterBefore2.jpg';
-import _3dprinting from '../assets/3dprinting.jpg';
 import _3dprintedgridfinity from '../assets/3dprintedgridfinity.jpg';
 import _3DPrintedPerson from '../assets/3DPrintedPerson(forsurgicalinstrumenttesting).jpg';
 import Modix1 from '../assets/Modix1.mp4';
@@ -46,7 +45,7 @@ const manufacturingData = [
   {
     title: "3D Printing & Prototyping",
     description: "Rapid iteration is the name of the game. I use FDM and Resin printing to test form, fit, and function before committing to metal, saving time and expensive material.",
-    media: [_3DPrinterBefore1, _3DPrinterBefore2, _3dprinting, _3dprintedgridfinity, _3DPrintedPerson, Voron1, Voron2, Modix1],
+    media: [_3DPrinterBefore1, _3DPrinterBefore2, _3dprintedgridfinity, _3DPrintedPerson, Voron1, Voron2, Modix1],
     projects: ["Custom 3D Printers"]
   },
   {
@@ -129,7 +128,7 @@ const ProcessSection = ({ section, index }) => {
           {typeof section.media[currentMedia] === 'string' && section.media[currentMedia].endsWith('.mp4') ? (
             <video 
               src={section.media[currentMedia]} 
-              className="carousel-slide" 
+              className={`carousel-slide${section.media[currentMedia].includes('WinderVideo') ? ' no-crop' : ''}`}
               autoPlay loop muted playsInline 
             />
           ) : (

@@ -48,7 +48,6 @@ import PrinterPic from '../assets/PrinterV2.jpg';
 import _3DPrinterBefore1 from '../assets/3DPrinterBefore1.jpg';
 import _3DPrinterBefore2 from '../assets/3DPrinterBefore2.jpg';
 import _3DPrinterBefore3 from '../assets/3DPrinterBefore3.jpg';
-import _3dprinting from '../assets/3dprinting.jpg';
 import PrinterFrame from '../assets/PrinterFrame.png';
 import PrinterV2 from '../assets/PrinterV2.jpg';
 import PrinterV21 from '../assets/PrinterV21.png';
@@ -233,7 +232,7 @@ import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
       {
         title: "The 'Ship of Theseus' Rebuild",
         description: "I bought a pile of junk a broken acrylic printer and rebuilt it from the ground up. I designed a rigid aluminum extrusion frame, printed PETG brackets, and swapped the brains for a BigTreeTech board. The biggest upgrade was moving to Klipper firmware, which lets me monitor prints from my phone and stop them if things go spaghetti.",
-        images: [_3DPrinterBefore1, _3DPrinterBefore2, _3DPrinterBefore3, _3dprinting,PrinterFrame, PrinterV2,PrinterV21]
+        images: [_3DPrinterBefore1, _3DPrinterBefore2, _3DPrinterBefore3,PrinterFrame, PrinterV2,PrinterV21]
       },
       {
         title: "Voron V0: Speed & Portability",

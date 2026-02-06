@@ -6,6 +6,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const ImageCarousel = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const isVideoFile = (value) => /\.(mp4|webm|mov)(\?.*)?$/i.test(value || '');
+  const isWinderVideo = (value) => /WinderVideo\.(mp4|webm|mov)(\?.*)?$/i.test(value || '');
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
@@ -33,10 +36,10 @@ const ImageCarousel = ({ images }) => {
           </>
         )}
         
-        {file && file.endsWith('.mp4') ? (
-          <video src={file} controls style={{ width: '100%', height: '100%', objectFit: 'contain' }} autoPlay loop muted playsInline />
+        {isVideoFile(file) ? (
+          <video src={file} controls className={`carousel-slide${isWinderVideo(file) ? ' no-crop' : ''}`} autoPlay loop muted playsInline />
         ) : (
-          <img src={file} alt="Project media" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src={file} alt="Project media" className="carousel-slide" />
         )}
         <div className="hockey-stick-decorator"></div>
       </div>
