@@ -24,7 +24,7 @@ export default function Home() {
           <a href="/contact" className="btn-retro">REACH OUT</a>
         </div>
 
-        {/* Right Side: Photo (plain container — no decorative stripes) */}
+        {/* Right Side: Photo (plain container - no decorative stripes) */}
         <div style={{ flex: 1, maxWidth: 450 }}>
           <img src={miloPhoto} alt="Milo Claydon sitting by a canal" className="hero-photo" />
         </div>

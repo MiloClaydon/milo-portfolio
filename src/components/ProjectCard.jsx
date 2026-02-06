@@ -9,17 +9,29 @@ export default function ProjectCard({ project }) {
       boxShadow: '8px 8px 0px var(--retro-orange)',
       transition: 'transform 0.2s'
     }}>
-      {/* Placeholder for Image - You will add real images later */}
+      {/* Project Card Image */}
       <div style={{
-        height: '150px',
+        height: '200px',
         backgroundColor: '#ddd',
         borderBottom: '2px solid var(--retro-brown)',
+        overflow: 'hidden',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        color: '#666'
+        justifyContent: 'center'
       }}>
-        [Image: {project.title}]
+        {project.cardImage ? (
+          <img 
+            src={project.cardImage} 
+            alt={project.title} 
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: 'cover' 
+            }} 
+          />
+        ) : (
+          <div style={{ color: '#666' }}>[Image: {project.title}]</div>
+        )}
       </div>
       
       <div style={{ padding: '20px' }}>

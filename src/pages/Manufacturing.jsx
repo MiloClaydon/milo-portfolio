@@ -9,6 +9,7 @@ import CNCMilling2 from '../assets/CNCMilling2.mp4';
 import CNCMilling3 from '../assets/CNCMilling3.mp4';
 import CNCParts1 from '../assets/CNCParts1.jpg';
 import CNCParts2 from '../assets/CNCParts2.jpg';
+import CNCParts3 from '../assets/CNCParts3.jpg';
 import cncmillingmachine from '../assets/cncmillingmachine.jpg';
 import _3DPrinterBefore1 from '../assets/3DPrinterBefore1.jpg';
 import _3DPrinterBefore2 from '../assets/3DPrinterBefore2.jpg';
@@ -26,19 +27,20 @@ import WinderVideo from '../assets/WinderVideo.mp4';
 import WeldedFoot1 from '../assets/WeldedFoot1(forWinder).jpg';
 import buildingfilamentwinder from '../assets/buildingfilamentwinder.jpg';
 import Wheel1 from '../assets/Wheel1.jpg';
+import Casting from '../assets/Casting.jfif';
 
 // Data Structure with actual assets and project references
 const manufacturingData = [
   {
     title: "Manual Machining",
-    description: "There's something about the tactile feedback of a manual lathe that G-code can't replicate. I grew up on manual mills, focusing on the 'feel' of the cut and hitting tolerances the old-school way.",
-    media: [WatchMilling1, WatchMilling2],
+    description: "Whenever a project allows it I prefer using manual machines. The tactile feedback takes the trial and error out of finding the right speeds and feeds. My first time on a manual mill and lathe was in my MIAE 312 class, I went on to be the teaching assistant for that class for the nest 2 years of my degree.",
+    media: [CNCParts3],
     projects: ["Precision Wristwatch"]
   },
   {
     title: "CNC Machining",
-    description: "When precision needs to meet repetition. I handle everything from CAM programming to fixture design, ensuring the spindles are running hot and the parts are coming out within microns.",
-    media: [CNCParts1, CNCParts2, cncmillingmachine, CNCMilling1, CNCMilling2, CNCMilling3],
+    description: "Sometimes manual machining doesn't cut it. For high volume production or complex geometries, CNC machining is the way to go. I've programmed and operated 3-axis mills and lathes, learning to optimize toolpaths for efficiency while maintaining tight tolerances. I worked with the concordia formula racing team, Baja team, space concordia, and a bunch of different research programs machining things from rocket parts to plastic injection molds",
+    media: [CNCParts1, CNCParts2, cncmillingmachine, CNCMilling1, CNCMilling2, CNCMilling3,WatchMilling1,WatchMilling2],
     projects: ["Precision Wristwatch"]
   },
   {
@@ -49,19 +51,19 @@ const manufacturingData = [
   },
   {
     title: "Casting & Foundry",
-    description: "Playing with molten metal. I've designed patterns and handled pours for aluminum and bronze, bridging the gap between digital design and ancient manufacturing techniques.",
-    media: [ClaydonBuilding, BuildingWithGrandpa],
+    description: "I've also done a good amount of metal casting. Mostly with aluminum and bronze, but this is a skill I'd like to develope further. Particularly incorporating resin 3D prints for lost resin castings",
+    media: [Casting],
     projects: ["Backyard Metallurgy"]
   },
   {
     title: "Welding & Fabrication",
-    description: "From structural steel to precision welds, I turn raw metal into functional machines. Structural integrity requires clean technique and respect for the material.",
-    media: [buildingfilamentwinder, WeldedFoot1, Winder2],
+    description: "Though they aren't always the prettiest welds. I've used MIG, TIG, and Stick welding to make my steel fabrication projects come to life. From building a filament winder from scratch to restoring an old pottery wheel, welding has been an essential skill in my manufacturing toolkit.",
+    media: [buildingfilamentwinder, WeldedFoot1],
     projects: ["Carbon Fiber Winder"]
   },
   {
     title: "Automation & Mechatronics",
-    description: "This is where the machine gets a brain. I integrate sensors, microcontrollers, custom motion control, and mechanical systems to turn static assemblies into autonomous machines.",
+    description: "This is possibly one of my favorite areas of manufacturing. I originally wanted to be a mechatronics engineer before I discovered my love for machining. Integrating mechanical systems with electronics and control systems to create automated solutions is fascinating. I've designed and built automated filament winders and CNC modifications for 3D printers, blending my skills in machining, electronics, and programming.",
     media: [Winder1, WinderVideo, Wheel1],
     projects: ["Carbon Fiber Winder", "Upcycled Pottery Wheel"]
   }
@@ -165,7 +167,7 @@ export default function Manufacturing() {
       ))}
 
       <footer style={{ padding: '80px 0', textAlign: 'center' }}>
-        <a href="/contact" className="btn-retro">NEED SOMETHING MADE?</a>
+        <a href="/contact" className="btn-retro">REACH OUT</a>
       </footer>
     </div>
   );

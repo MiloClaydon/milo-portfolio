@@ -93,7 +93,7 @@ h1, h2, h3, h4 {
 .carousel-container {
   flex: 1.2;
   position: relative;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   border: 6px solid var(--retro-burgundy);
   box-shadow: 15px 15px 0px var(--retro-orange);
   overflow: hidden;
