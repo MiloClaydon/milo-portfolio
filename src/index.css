@@ -107,6 +107,12 @@ h1, h2, h3, h4 {
   background: #000;
 }
 
+/* Crop tall videos to show the middle portion */
+.carousel-slide[src$=".mp4"] {
+  object-fit: cover;
+  object-position: center;
+}
+
 .carousel-btn {
   position: absolute;
   top: 50%;
