@@ -1,66 +1,66 @@
 // Portfolio Website
-import Website1Code from '../assets/WebsiteCode.jpg';
+const Website1Code = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349396/WebsiteCode_smwn89.jpg';
 
 // Precision Wristwatch
-import FinalWatch from '../assets/FinalWatch.jpg';
-import WatchCAD1 from '../assets/WatchCad1.png';
-import CrownDims from '../assets/CrownDims.avif';
-import Watch3 from '../assets/Watch3.jpg';
-import WatchMilling1 from '../assets/WatchMilling1.jpg';
-import WatchMilling2 from '../assets/Watchmilling2.jpg';
-import WatchMilling3 from '../assets/WatchMilling3.jpg';
-import WatchMilling4 from '../assets/WatchMilling4.jpg';
-import CNCMilling1 from '../assets/CNCMilling1.mp4';
-import CNCMilling2 from '../assets/CNCMilling2.mp4';
-import CNCMilling3 from '../assets/CNCMilling3.mp4';
-import Watch5 from '../assets/Watch5.mp4';
-import Watch6 from '../assets/Watch6.mp4';
+const FinalWatch = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348554/FinalWatch_wzzfwb.jpg';
+const WatchCAD1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349387/WatchCad1_pf9rnt.png';
+const CrownDims = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348554/CrownDims_pkphei.avif';
+const Watch3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349386/Watch3_dxa3pb.jpg';
+const WatchMilling1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349389/WatchMilling1_fmlkea.jpg';
+const WatchMilling2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349391/Watchmilling2_wi0jbh.jpg';
+const WatchMilling3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349393/WatchMilling3_cupbwf.jpg';
+const WatchMilling4 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349396/WatchMilling4_ocvyt5.jpg';
+const CNCMilling1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347171/CNCMilling1_uw9z3b.mp4';
+const CNCMilling2 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347199/CNCMilling2_eteafw.mp4';
+const CNCMilling3 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347165/CNCMilling3_fqcbha.mp4';
+const Watch5 = null; // MISSING from Cloudinary
+const Watch6 = null; // MISSING from Cloudinary
 
 // Carbon Fiber Winder
-import WinderSchematic from '../assets/WinderSchematic.jpg';
-import WinderCAD1 from '../assets/WinderCAD1.png';
-import WinderCAD2 from '../assets/WinderCAD2.png';
-import WinderCAD3 from '../assets/WinderCAD3.png';
-import CarriageWinder from '../assets/CarriageWinder.png';
-import CNCParts2 from '../assets/CNCParts2.jpg';
-import buildingfilamentwinder from '../assets/buildingfilamentwinder.jpg';
-import WeldedFoot1 from '../assets/WeldedFoot1(forWinder).jpg';
-import wiringfilamentwinder from '../assets/wiringfilamentwinder.jpg';
-import Winder1 from '../assets/Winder1.mp4';
-import Winder2 from '../assets/Winder2.jpg';
-import Weldin1 from '../assets/Weldin1.jpg';
-import Welding2 from '../assets/Welding2.jpg';
-import WinderVideo from '../assets/WinderVideo.mp4';
+const WinderSchematic = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348692/WinderSchematic_bciodp.jpg';
+const WinderCAD1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348609/WinderCAD1_onaskd.png';
+const WinderCAD2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348624/WinderCAD2_ivwmbb.png';
+const WinderCAD3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348691/WinderCAD3_zkltod.png';
+const CarriageWinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346721/CarriageWinder_p1lelw.png';
+const CNCParts2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348553/CNCParts2_fdwvoo.jpg';
+const buildingfilamentwinder = null; // MISSING from Cloudinary
+const WeldedFoot1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349399/WeldedFoot1_forWinder_ykbyim.jpg';
+const wiringfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348695/wiringfilamentwinder_bkefd1.jpg';
+const Winder1 = null; // MISSING from Cloudinary
+const Winder2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349408/Winder2_qxrisg.jpg';
+const Weldin1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349402/Weldin1_buonzf.jpg';
+const Welding2 = null; // MISSING from Cloudinary
+const WinderVideo = null; // MISSING from Cloudinary
 
 // Pottery Wheel
-import PotteryWheel from '../assets/PotteryWheel.jpg';
-import Wheel1 from '../assets/Wheel1.jpg';
+const PotteryWheel = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348565/PotteryWheel_ucmgf8.jpg';
+const Wheel1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349403/Wheel1_knkloj.jpg';
 
 // Logic Voltmeter
-import Voltmeter1 from '../assets/Voltmeter1.jpg';
-import Voltmeter2 from '../assets/Voltmeter2.mp4';
-import Voltmeter3 from '../assets/Voltmeter3.mp4';
-import Voltmeter4 from '../assets/Voltmeter4.mp4';
-import Voltmeter5 from '../assets/Voltmeter5.mp4';
+const Voltmeter1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349380/Voltmeter1_xd68dp.jpg';
+const Voltmeter2 = null; // MISSING from Cloudinary
+const Voltmeter3 = null; // MISSING from Cloudinary
+const Voltmeter4 = null; // MISSING from Cloudinary
+const Voltmeter5 = null; // MISSING from Cloudinary
 
 // 3D Printers
-import PrinterPic from '../assets/PrinterV2.jpg';
-import _3DPrinterBefore1 from '../assets/3DPrinterBefore1.jpg';
-import _3DPrinterBefore2 from '../assets/3DPrinterBefore2.jpg';
-import _3DPrinterBefore3 from '../assets/3DPrinterBefore3.jpg';
-import PrinterFrame from '../assets/PrinterFrame.png';
-import PrinterV2 from '../assets/PrinterV2.jpg';
-import PrinterV21 from '../assets/PrinterV21.png';
-import Voron1 from '../assets/Voron1.mp4';
-import Voron2 from '../assets/Voron2.jpg';
+const PrinterPic = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterV2_yh94rn.jpg';
+const _3DPrinterBefore1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346715/3DPrinterBefore1_q5uxv0.jpg';
+const _3DPrinterBefore2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346721/3DPrinterBefore2_f64t0v.jpg';
+const _3DPrinterBefore3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346716/3DPrinterBefore3_dvo6ks.jpg';
+const PrinterFrame = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterFrame_idcexg.png';
+const PrinterV2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterV2_yh94rn.jpg';
+const PrinterV21 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348607/PrinterV21_z7w2uj.png';
+const Voron1 = null; // MISSING from Cloudinary
+const Voron2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349386/Voron2_zth9zr.jpg';
 
 // Battery Packs
-import SpotWelder from '../assets/SpotWelder.jpg';
-import Batteries from '../assets/Batteries.JPG';
+const SpotWelder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348607/SpotWelder_pfxpxm.jpg';
+const Batteries = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346741/Batteries_x6ribh.jpg';
 
 // Backyard Metallurgy (commented out)
-import ClaydonBuilding from '../assets/ClaydonBuilding.jpg';
-import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
+const ClaydonBuilding = null; // MISSING from Cloudinary
+const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346735/BuildingWithGrandpa_qzxff2.jpg';
 
   export const projects = [
   {
@@ -108,7 +108,7 @@ import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
       {
         title: "The Finished Piece",
         description: "Putting this on my wrist for the first time was surreal. Sure, I can still see the tiny imperfections that nobody else notices, but that's part of the charm. It works, it's waterproof, and it's proof that I can take an idea from a sketch to a functional mechanical assembly. I'm almost afraid to wear it and scratch it, but it drives me to want to build the next one even better.",
-        images: [Watch5, Watch6]
+        images: []
       }
     ],
     technicalSpecs: [
@@ -135,17 +135,17 @@ import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
       {
         title: "The 'Toy' vs. The Beast",
         description: "We started by buying an off-the-shelf winder, but it was a joke tiny NEMA 17 motors and Acetal wheels trying to pull 60lbs of fiber tension. We realized immediately we had to scrap it. I helped design a custom welded steel chassis and sourced massive NEMA 52 servos that could actually handle the torque requirements of a rocket engine.",
-        images: [WinderCAD3, CarriageWinder, WinderCAD2,WinderCAD1, CNCParts2,buildingfilamentwinder, WeldedFoot1]
+        images: [WinderCAD3, CarriageWinder, WinderCAD2,WinderCAD1, CNCParts2, WeldedFoot1]
       },
       {
         title: "Full-Stack Engineering",
         description: "This project forced me to do everything. One day I was under the frame MIG welding the steel feet; the next I was debugging a Python multi-threading script to get the 4 axes to talk to each other. The software was the biggest hurdle for me, but solving the synchronization logic gave me a huge appreciation for control systems.",
-        images: [wiringfilamentwinder, Winder1, Winder2,Weldin1,Welding2]
+        images: [wiringfilamentwinder, Winder2,Weldin1]
       },
       {
         title: "Optimized Performance",
         description: "The results speak for themselves. By using continuous fiber tows instead of square sheets, we eliminated the weak points between layers. We reduced the engine's mass while keeping the same structural integrity. Watching the machine run its first full pattern autonomously was one of the proudest moments of my degree.",
-        images: [WinderVideo]
+        images: []
       }
     ],
     technicalSpecs: [
@@ -188,7 +188,7 @@ import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
     tech: ["Digital Logic", "Integrated Circuits", "PCB Design", "Circuit Analysis"],
     year: "2023",
     layout: "single",
-    images: [Voltmeter1, Voltmeter2, Voltmeter3, Voltmeter4, Voltmeter5],
+    images: [Voltmeter1],
     technicalSpecs: [
       "Architecture: Flash ADC utilizing comparator arrays and priority encoders.",
       "Logic Family: 7400-series TTL and CD4000-series CMOS logic.",
@@ -237,7 +237,7 @@ import BuildingWithGrandpa from '../assets/BuildingWithGrandpa.jpg';
       {
         title: "Voron V0: Speed & Portability",
         description: "This is my 'rapid response' unit. I built it from a kit but tuned it for pure speed. It features a high-flow hotend and custom macros. It allows me to design a part in a lecture and have it printed by the time the next class starts.",
-        images: [Voron1, Voron2]
+        images: [Voron2]
       }
     ],
     technicalSpecs: [

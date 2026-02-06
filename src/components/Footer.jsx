@@ -61,11 +61,26 @@ export default function Footer() {
           fontWeight: '500'
         }}>Montreal, Canada | 819-431-8894</p>
         
-        <p style={{ 
-          color: 'var(--retro-blue)', 
-          margin: '12px 0',
-          fontSize: '0.95rem'
-        }}>miloclaydon@hotmail.com</p>
+        <a 
+          href="mailto:miloclaydon@hotmail.com"
+          style={{ 
+            color: 'var(--retro-blue)', 
+            margin: '12px 0',
+            fontSize: '0.95rem',
+            textDecoration: 'none',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = 'var(--retro-orange)';
+            e.currentTarget.style.textDecoration = 'underline';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = 'var(--retro-blue)';
+            e.currentTarget.style.textDecoration = 'none';
+          }}
+        >
+          miloclaydon@hotmail.com
+        </a>
 
         {/* LinkedIn Button */}
         <div style={{ marginTop: '35px' }}>

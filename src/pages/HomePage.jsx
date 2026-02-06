@@ -1,6 +1,7 @@
 import { projects, skills } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
-import miloPhoto from '../assets/HomePagePhoto.jpg'; 
+
+const miloPhoto = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348564/HomePagePhoto_ssqm3u.jpg';
 
 export default function Home() {
   return (
