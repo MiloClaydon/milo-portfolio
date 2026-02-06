@@ -13,8 +13,8 @@ const WatchMilling4 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v177034
 const CNCMilling1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347171/CNCMilling1_uw9z3b.mp4';
 const CNCMilling2 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347199/CNCMilling2_eteafw.mp4';
 const CNCMilling3 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770347165/CNCMilling3_fqcbha.mp4';
-const Watch5 = null; // MISSING from Cloudinary
-const Watch6 = null; // MISSING from Cloudinary
+const Watch5 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358704/Watch5_y6nwqd.mp4';
+const Watch6 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358440/Watch6_k42ukw.mp4';
 
 // Carbon Fiber Winder
 const WinderSchematic = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348692/WinderSchematic_bciodp.jpg';
@@ -22,14 +22,15 @@ const WinderCAD1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v177034860
 const WinderCAD2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348624/WinderCAD2_ivwmbb.png';
 const WinderCAD3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348691/WinderCAD3_zkltod.png';
 const CarriageWinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346721/CarriageWinder_p1lelw.png';
+const CNCParts1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770347171/CNCParts1_dutsnd.jpg';
 const CNCParts2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348553/CNCParts2_fdwvoo.jpg';
-const buildingfilamentwinder = null; // MISSING from Cloudinary
+const buildingfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358711/buildingfilamentwinder_das1jx.jpg';
 const WeldedFoot1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349399/WeldedFoot1_forWinder_ykbyim.jpg';
 const wiringfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348695/wiringfilamentwinder_bkefd1.jpg';
 const Winder1 = null; // MISSING from Cloudinary
-const Winder2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349408/Winder2_qxrisg.jpg';
+const Winder2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358704/Winder2_wqqify.jpg';
 const Weldin1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349402/Weldin1_buonzf.jpg';
-const Welding2 = null; // MISSING from Cloudinary
+const Welding2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349403/Welding2_rochgr.jpg';
 const WinderVideo = null; // MISSING from Cloudinary
 
 // Pottery Wheel
@@ -38,10 +39,10 @@ const Wheel1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349403/Wh
 
 // Logic Voltmeter
 const Voltmeter1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349380/Voltmeter1_xd68dp.jpg';
-const Voltmeter2 = null; // MISSING from Cloudinary
-const Voltmeter3 = null; // MISSING from Cloudinary
-const Voltmeter4 = null; // MISSING from Cloudinary
-const Voltmeter5 = null; // MISSING from Cloudinary
+const Voltmeter2 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358702/Voltmeter2_colbdg.mp4';
+const Voltmeter3 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358432/Voltmeter3_e1aj2t.mp4';
+const Voltmeter4 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358436/Voltmeter4_o3jw8x.mp4';
+const Voltmeter5 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358436/Voltmeter5_of4nky.mp4';
 
 // 3D Printers
 const PrinterPic = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterV2_yh94rn.jpg';
@@ -51,7 +52,8 @@ const _3DPrinterBefore3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v17
 const PrinterFrame = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterFrame_idcexg.png';
 const PrinterV2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterV2_yh94rn.jpg';
 const PrinterV21 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348607/PrinterV21_z7w2uj.png';
-const Voron1 = null; // MISSING from Cloudinary
+const Modix1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358440/Modix1_uye9ip.mp4';
+const Voron1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358435/Voron1_wva9wz.mp4';
 const Voron2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349386/Voron2_zth9zr.jpg';
 
 // Battery Packs
@@ -59,7 +61,7 @@ const SpotWelder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v177034860
 const Batteries = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346741/Batteries_x6ribh.jpg';
 
 // Backyard Metallurgy (commented out)
-const ClaydonBuilding = null; // MISSING from Cloudinary
+const ClaydonBuilding = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346729/ClaydonBuilding_aivzzn.jpg';
 const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346735/BuildingWithGrandpa_qzxff2.jpg';
 
   export const projects = [
