@@ -20,9 +20,9 @@ const Voron1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358435/Vo
 const Voron2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349386/Voron2_zth9zr.jpg';
 const ClaydonBuilding = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346729/ClaydonBuilding_aivzzn.jpg';
 const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770346735/BuildingWithGrandpa_qzxff2.jpg';
-const Winder1 = null; // MISSING from Cloudinary
+const Winder1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770367883/Winder1_bbgbr0.mp4';
 const Winder2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358704/Winder2_wqqify.jpg';
-const WinderVideo = null; // MISSING from Cloudinary
+const WinderVideo = 'https://youtu.be/7vv29b_7kYo';
 const WeldedFoot1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349399/WeldedFoot1_forWinder_ykbyim.jpg';
 const buildingfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358711/buildingfilamentwinder_das1jx.jpg';
 const Wheel1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349403/Wheel1_knkloj.jpg';
@@ -71,6 +71,18 @@ const manufacturingData = [
 const ProcessSection = ({ section, index }) => {
   const [currentMedia, setCurrentMedia] = useState(0);
   const isReverse = index % 2 !== 0;
+  const isVideoFile = (value) => /\.(mp4|webm|mov)(\?.*)?$/i.test(value || '');
+  const isYouTubeUrl = (value) => /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)/i.test(value || '');
+  const getYouTubeEmbedUrl = (value) => {
+    if (!value) return '';
+    const shortMatch = value.match(/youtu\.be\/([\w-]+)/i);
+    if (shortMatch && shortMatch[1]) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+    const longMatch = value.match(/[?&]v=([^&]+)/i);
+    if (longMatch && longMatch[1]) return `https://www.youtube.com/embed/${longMatch[1]}`;
+    const embedMatch = value.match(/youtube\.com\/embed\/([^?&]+)/i);
+    if (embedMatch && embedMatch[1]) return `https://www.youtube.com/embed/${embedMatch[1]}`;
+    return value;
+  };
 
   // Auto-scroll logic: 15 seconds
   useEffect(() => {
@@ -125,17 +137,26 @@ const ProcessSection = ({ section, index }) => {
             </>
           )}
           
-          {typeof section.media[currentMedia] === 'string' && section.media[currentMedia].endsWith('.mp4') ? (
-            <video 
-              src={section.media[currentMedia]} 
+          {isYouTubeUrl(section.media[currentMedia]) ? (
+            <iframe
+              src={getYouTubeEmbedUrl(section.media[currentMedia])}
+              title={section.title}
+              className="carousel-slide"
+              style={{ border: 0 }}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          ) : isVideoFile(section.media[currentMedia]) ? (
+            <video
+              src={section.media[currentMedia]}
               className={`carousel-slide${section.media[currentMedia].includes('WinderVideo') ? ' no-crop' : ''}`}
-              autoPlay loop muted playsInline 
+              autoPlay loop muted playsInline
             />
           ) : (
-            <img 
-              src={section.media[currentMedia]} 
-              alt={section.title} 
-              className="carousel-slide" 
+            <img
+              src={section.media[currentMedia]}
+              alt={section.title}
+              className="carousel-slide"
             />
           )}
           <div className="hockey-stick-decorator"></div>

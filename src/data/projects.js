@@ -27,11 +27,11 @@ const CNCParts2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348553
 const buildingfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358711/buildingfilamentwinder_das1jx.jpg';
 const WeldedFoot1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349399/WeldedFoot1_forWinder_ykbyim.jpg';
 const wiringfilamentwinder = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348695/wiringfilamentwinder_bkefd1.jpg';
-const Winder1 = null; // MISSING from Cloudinary
+const Winder1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770367883/Winder1_bbgbr0.mp4';
 const Winder2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770358704/Winder2_wqqify.jpg';
 const Weldin1 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349402/Weldin1_buonzf.jpg';
 const Welding2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349403/Welding2_rochgr.jpg';
-const WinderVideo = null; // MISSING from Cloudinary
+const WinderVideo = 'https://youtu.be/7vv29b_7kYo';
 
 // Pottery Wheel
 const PotteryWheel = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348565/PotteryWheel_ucmgf8.jpg';

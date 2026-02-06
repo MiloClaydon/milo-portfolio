@@ -8,6 +8,17 @@ const ImageCarousel = ({ images }) => {
 
   const isVideoFile = (value) => /\.(mp4|webm|mov)(\?.*)?$/i.test(value || '');
   const isWinderVideo = (value) => /WinderVideo\.(mp4|webm|mov)(\?.*)?$/i.test(value || '');
+  const isYouTubeUrl = (value) => /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)/i.test(value || '');
+  const getYouTubeEmbedUrl = (value) => {
+    if (!value) return '';
+    const shortMatch = value.match(/youtu\.be\/([\w-]+)/i);
+    if (shortMatch && shortMatch[1]) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+    const longMatch = value.match(/[?&]v=([^&]+)/i);
+    if (longMatch && longMatch[1]) return `https://www.youtube.com/embed/${longMatch[1]}`;
+    const embedMatch = value.match(/youtube\.com\/embed\/([^?&]+)/i);
+    if (embedMatch && embedMatch[1]) return `https://www.youtube.com/embed/${embedMatch[1]}`;
+    return value;
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -36,7 +47,16 @@ const ImageCarousel = ({ images }) => {
           </>
         )}
         
-        {isVideoFile(file) ? (
+        {isYouTubeUrl(file) ? (
+          <iframe
+            src={getYouTubeEmbedUrl(file)}
+            title="Project media"
+            className="carousel-slide"
+            style={{ border: 0 }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        ) : isVideoFile(file) ? (
           <video src={file} controls className={`carousel-slide${isWinderVideo(file) ? ' no-crop' : ''}`} autoPlay loop muted playsInline />
         ) : (
           <img src={file} alt="Project media" className="carousel-slide" />
