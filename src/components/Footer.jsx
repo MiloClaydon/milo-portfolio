@@ -1,4 +1,5 @@
 import { Linkedin } from 'lucide-react';
+import Logo from '../assets/Logo.png';
 
 export default function Footer() {
   const stripes = [
@@ -36,6 +37,7 @@ export default function Footer() {
 
       {/* Main footer content */}
       <div className="container" style={{ padding: '60px 20px', textAlign: 'center' }}>
+        <img src={Logo} alt="Milo Claydon logo" className="footer-logo" />
         <h3 style={{ 
           color: 'var(--retro-burgundy)', 
           marginBottom: '5px',

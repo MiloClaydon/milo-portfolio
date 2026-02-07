@@ -90,13 +90,15 @@ export default function ProjectDetail() {
       {project.layout === 'steps' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
           {project.steps.map((step, index) => (
-            <div key={index} style={{ display: 'grid', gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
-              <div style={{ order: index % 2 === 0 ? 1 : 2 }}>
+            <div key={index} className={`project-step${index % 2 !== 0 ? ' reverse' : ''}`}>
+              <div className="project-step-heading">
                 <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
-                <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
               </div>
-              <div style={{ order: index % 2 === 0 ? 2 : 1 }}>
+              <div className="project-step-media">
                 <ImageCarousel images={step.images} />
+              </div>
+              <div className="project-step-body">
+                <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
               </div>
             </div>
           ))}
@@ -105,11 +107,11 @@ export default function ProjectDetail() {
 
       {/* Single Layout */}
       {project.layout === 'single' && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
-          <div>
+        <div className="project-single" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+          <div className="project-single-body">
             <p style={{ fontSize: '1.4rem' }}>{project.description}</p>
           </div>
-          <div>
+          <div className="project-single-media">
             {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
           </div>
         </div>

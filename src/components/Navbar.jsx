@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { projects } from '../data/projects';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
 
   // Match the logo box: burgundy background, tan border, orange shadow
   const navLinkStyle = {
-    color: 'var(--retro-tan)',
+    color: 'var(--retro-cream)',
     textDecoration: 'none',
     fontSize: '0.9rem',
     fontFamily: 'var(--font-heading)',
@@ -65,8 +66,19 @@ export default function Navbar() {
     setIsOpen(true);
   };
 
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+    if (isMenuOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleToggleProjects = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
-    <nav style={{ backgroundColor: 'var(--retro-burgundy)', position: 'sticky', top: 0, zIndex: 1000, height: '100px' }}>
+    <nav className="navbar" style={{ backgroundColor: 'var(--retro-burgundy)', position: 'sticky', top: 0, zIndex: 1000, height: '100px' }}>
       
       {/* Decorative SVG stripes (pointer-events none so links are clickable) */}
       <div style={{ position: 'absolute', width: '100%', height: '100%', top: 0, left: 0, pointerEvents: 'none' }}>
@@ -85,14 +97,14 @@ export default function Navbar() {
         </svg>
       </div>
 
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', position: 'relative', zIndex: 10 }}>
+      <div className="container nav-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%', position: 'relative', zIndex: 10 }}>
         
         {/* Logo */}
         <Link to="/" style={{ 
           textDecoration: 'none', 
-          color: 'var(--retro-tan)',
+          color: 'var(--retro-cream)',
           fontSize: '1.2rem',
-          fontFamily: 'var(--font-heading)',
+          fontFamily: "'IBM Plex Mono', monospace",
           fontWeight: 900,
           border: '3px solid var(--retro-tan)',
           padding: '8px 20px',
@@ -100,13 +112,23 @@ export default function Navbar() {
           boxShadow: '4px 4px 0px var(--retro-orange)',
           zIndex: 11
         }}>
-          MILO CLAYDON
+          MCE
         </Link>
 
+        <button
+          className="nav-toggle"
+          type="button"
+          aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={isMenuOpen}
+          onClick={handleToggleMenu}
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+
         {/* Links with same boxed style as logo */}
-        <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0, padding: 0, height: '100%', alignItems: 'center' }}>
+        <ul className={`nav-links${isMenuOpen ? ' open' : ''}`} style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0, padding: 0, height: '100%', alignItems: 'center' }}>
           <li>
-            <Link to="/" style={navLinkStyle}
+            <Link to="/" style={navLinkStyle} className="nav-link" onClick={() => setIsMenuOpen(false)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
                 e.currentTarget.style.color = 'white';
@@ -125,7 +147,10 @@ export default function Navbar() {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{ position: 'relative' }}>
-            <div style={{ ...navLinkStyle, cursor: 'pointer', gap: '8px' }}
+            <div
+              className="nav-link"
+              style={{ ...navLinkStyle, cursor: 'pointer', gap: '8px' }}
+              onClick={handleToggleProjects}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
                 e.currentTarget.style.color = 'white';
@@ -140,6 +165,7 @@ export default function Navbar() {
             </div>
             {isOpen && (
               <ul 
+                className="nav-dropdown"
                 style={dropdownStyle}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}>
@@ -161,7 +187,10 @@ export default function Navbar() {
                       }}
                       onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-orange)'}
                       onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--retro-tan)'}
-                      onClick={() => setIsOpen(false)}>
+                      onClick={() => {
+                        setIsOpen(false);
+                        setIsMenuOpen(false);
+                      }}>
                       {p.title}
                     </Link>
                   </li>
@@ -171,7 +200,7 @@ export default function Navbar() {
           </li>
 
           <li>
-            <Link to="/machining" style={navLinkStyle}
+            <Link to="/machining" style={navLinkStyle} className="nav-link" onClick={() => setIsMenuOpen(false)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
                 e.currentTarget.style.color = 'white';
@@ -187,7 +216,7 @@ export default function Navbar() {
           </li>
 
           <li>
-            <Link to="/contact" style={navLinkStyle}
+            <Link to="/contact" style={navLinkStyle} className="nav-link" onClick={() => setIsMenuOpen(false)}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--retro-orange)';
                 e.currentTarget.style.color = 'white';

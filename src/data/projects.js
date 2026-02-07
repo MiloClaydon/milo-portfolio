@@ -147,7 +147,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
       {
         title: "Optimized Performance",
         description: "The results speak for themselves. By using continuous fiber tows instead of square sheets, we eliminated the weak points between layers. We reduced the engine's mass while keeping the same structural integrity. Watching the machine run its first full pattern autonomously was one of the proudest moments of my degree.",
-        images: []
+        images: [WinderVideo]
       }
     ],
     technicalSpecs: [

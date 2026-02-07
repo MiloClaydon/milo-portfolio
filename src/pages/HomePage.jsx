@@ -1,5 +1,6 @@
 import { projects, skills } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import Logo from '../assets/Logo.png';
 
 const miloPhoto = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348564/HomePagePhoto_ssqm3u.jpg';
 
@@ -11,6 +12,7 @@ export default function Home() {
       <section className="hero-split">
         {/* Left Side: Text */}
         <div className="hero-text">
+          <img src={Logo} alt="Milo Claydon logo" className="home-logo" />
           <h1 style={{ fontSize: '4rem', margin: '0', lineHeight: '0.9', color: 'var(--retro-burgundy)' }}>
             MILO<br />CLAYDON
           </h1>

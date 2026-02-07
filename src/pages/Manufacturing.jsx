@@ -102,33 +102,15 @@ const ProcessSection = ({ section, index }) => {
   };
 
   return (
-    <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start', marginBottom: '60px' }}>
-      {/* Text content */}
-      <div style={{ order: isReverse ? 2 : 1 }}>
-        <h2 style={{ fontSize: '2.5rem', color: 'var(--retro-burgundy)', marginBottom: '1rem' }}>
-          {section.title}
-        </h2>
+    <section className={`process-grid${isReverse ? ' reverse' : ''}`}>
+      {/* Title */}
+      <div className="process-heading">
+        <h2 className="process-section-title">{section.title}</h2>
         <div className="retro-stripes-horizontal" style={{ height: '12px', width: '60%', marginBottom: '1.5rem' }}></div>
-        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1.5rem' }}>{section.description}</p>
-        
-        {section.projects && section.projects.length > 0 && (
-          <div style={{ backgroundColor: 'var(--retro-tan)', padding: '15px 20px', border: '3px solid var(--retro-burgundy)', marginTop: '1.5rem' }}>
-            <p style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold', color: 'var(--retro-burgundy)', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-              Used in:
-            </p>
-            <ul style={{ margin: '0', paddingLeft: '20px', listStyle: 'disc' }}>
-              {section.projects.map((project, i) => (
-                <li key={i} style={{ color: 'var(--retro-burgundy)', fontWeight: '600', fontSize: '0.95rem' }}>
-                  {project}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
       </div>
 
       {/* Media carousel */}
-      <div style={{ order: isReverse ? 1 : 2 }}>
+      <div className="process-media">
         <div className="carousel-container">
           {section.media.length > 1 && (
             <>
@@ -162,6 +144,24 @@ const ProcessSection = ({ section, index }) => {
           <div className="hockey-stick-decorator"></div>
         </div>
       </div>
+
+      {/* Description */}
+      <div className="process-body">
+        <p className="process-section-text">{section.description}</p>
+
+        {section.projects && section.projects.length > 0 && (
+          <div className="process-projects">
+            <p className="process-projects-title">Used in:</p>
+            <ul className="process-projects-list">
+              {section.projects.map((project, i) => (
+                <li key={i} className="process-projects-item">
+                  {project}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </section>
   );
 };
@@ -169,9 +169,9 @@ const ProcessSection = ({ section, index }) => {
 export default function Manufacturing() {
   return (
     <div className="container">
-      <header style={{ padding: '60px 0', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '3.5rem', color: 'var(--retro-orange)' }}>Workshop Log</h1>
-        <p style={{ fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+      <header className="process-header">
+        <h1 className="process-title">Workshop Log</h1>
+        <p className="process-intro">
           A look at the techniques I use to turn raw materials into functional machines. 
           Hardware is hard, but that's the fun part.
         </p>
@@ -186,7 +186,7 @@ export default function Manufacturing() {
         </React.Fragment>
       ))}
 
-      <footer style={{ padding: '80px 0', textAlign: 'center' }}>
+      <footer className="process-footer">
         <a href="/contact" className="btn-retro">REACH OUT</a>
       </footer>
     </div>
