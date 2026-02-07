@@ -1,3 +1,5 @@
+import { normalizeUnicode } from "pdfjs-dist";
+
 // Portfolio Website
 const Website1Code = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349396/WebsiteCode_smwn89.jpg';
 
@@ -113,7 +115,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
         images: [Watch5, Watch6]
       }
     ],
-    technicalSpecs: [
+    technicalSpecs: [normalizeUnicode,
       "Material: 316L Stainless Steel (Case), Brass (Movement Ring), Sapphire Crystal.",
       "Machine: Tormach 1100MX CNC Mill with flood coolant.",
       "Tolerance Target: ±0.01mm on critical bearing surfaces.",

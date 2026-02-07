@@ -382,6 +382,10 @@ video.carousel-slide.no-crop {
 
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
   .navbar {
     height: auto;
   }
