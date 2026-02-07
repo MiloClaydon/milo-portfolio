@@ -65,6 +65,12 @@ const manufacturingData = [
     description: "This is possibly one of my favorite areas of manufacturing. I originally wanted to be a mechatronics engineer before I discovered my love for machining. Integrating mechanical systems with electronics and control systems to create automated solutions is fascinating. I've designed and built automated filament winders and CNC modifications for 3D printers, blending my skills in machining, electronics, and programming.",
     media: [Winder1, WinderVideo, Wheel1].filter(Boolean),
     projects: ["Carbon Fiber Winder", "Upcycled Pottery Wheel"]
+  },
+  {
+    title: "Construction & Renovation",
+    description: "Construction has always been a family effort in my life. From a young age I was surrounded by design, structural thinking, and hands-on building, and those lessons shaped how I approach engineering today. I started my own property management company at 18 and have since built decks, roofs, bathrooms, cabins, docks, walkways, and handled electrical and plumbing work. These projects taught me how to manage scope, visualize how every piece fits together, and respect the details that make complex systems succeed. That’s why learning new engineering and manufacturing techniques excites me — each one unlocks more things I can build. A sincere thank you to my father and grandfather for teaching me these skills early on; they gave me a passion for building that’s a priceless gift.",
+    media: [ClaydonBuilding, BuildingWithGrandpa].filter(Boolean),
+    projects: []
   }
 ];
 

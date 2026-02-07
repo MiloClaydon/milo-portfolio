@@ -54,7 +54,6 @@ const _3DPrinterBefore3 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v17
 const PrinterFrame = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterFrame_idcexg.png';
 const PrinterV2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348567/PrinterV2_yh94rn.jpg';
 const PrinterV21 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770348607/PrinterV21_z7w2uj.png';
-const Modix1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358440/Modix1_uye9ip.mp4';
 const Voron1 = 'https://res.cloudinary.com/dpe1tjjay/video/upload/v1770358435/Voron1_wva9wz.mp4';
 const Voron2 = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v1770349386/Voron2_zth9zr.jpg';
 
@@ -139,12 +138,12 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
       {
         title: "The 'Toy' vs. The Beast",
         description: "We started by buying an off-the-shelf winder, but it was a joke tiny NEMA 17 motors and Acetal wheels trying to pull 60lbs of fiber tension. We realized immediately we had to scrap it. I helped design a custom welded steel chassis and sourced massive NEMA 52 servos that could actually handle the torque requirements of a rocket engine.",
-        images: [WinderCAD3, CarriageWinder, WinderCAD2,WinderCAD1, CNCParts2, WeldedFoot1]
+        images: [WinderCAD3, CarriageWinder, WinderCAD2,WinderCAD1, CNCParts2, WeldedFoot1,Winder1]
       },
       {
         title: "Full-Stack Engineering",
         description: "This project forced me to do everything. One day I was under the frame MIG welding the steel feet; the next I was debugging a Python multi-threading script to get the 4 axes to talk to each other. The software was the biggest hurdle for me, but solving the synchronization logic gave me a huge appreciation for control systems.",
-        images: [wiringfilamentwinder, Winder2,Weldin1]
+        images: [wiringfilamentwinder, Winder2,Weldin1,CNCParts1,Welding2,buildingfilamentwinder]
       },
       {
         title: "Optimized Performance",
@@ -192,7 +191,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     tech: ["Digital Logic", "Integrated Circuits", "PCB Design", "Circuit Analysis"],
     year: "2023",
     layout: "single",
-    images: [Voltmeter1],
+    images: [Voltmeter1,Voltmeter2,Voltmeter3,Voltmeter4,Voltmeter5],
     technicalSpecs: [
       "Architecture: Flash ADC utilizing comparator arrays and priority encoders.",
       "Logic Family: 7400-series TTL and CD4000-series CMOS logic.",
@@ -241,7 +240,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
       {
         title: "Voron V0: Speed & Portability",
         description: "This is my 'rapid response' unit. I built it from a kit but tuned it for pure speed. It features a high-flow hotend and custom macros. It allows me to design a part in a lecture and have it printed by the time the next class starts.",
-        images: [Voron2]
+        images: [Voron2,Voron1]
       }
     ],
     technicalSpecs: [
