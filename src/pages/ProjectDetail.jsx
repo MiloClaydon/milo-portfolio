@@ -90,7 +90,7 @@ export default function ProjectDetail() {
   if (!project) return <div className="container"><h2>Project not found</h2></div>;
 
   return (
-    <div className="container" style={{ padding: '60px 0' }}>
+    <div className="container project-detail" style={{ padding: '60px 0' }}>
       <Link to="/" style={{ color: 'var(--retro-orange)', fontWeight: 'bold', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}>
         <ChevronLeft size={18} /> RETURN TO MISSION CONTROL
       </Link>

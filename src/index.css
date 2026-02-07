@@ -386,6 +386,10 @@ video.carousel-slide.no-crop {
     padding: 0 16px;
   }
 
+  .project-detail {
+    padding: 40px 0 !important;
+  }
+
   .navbar {
     height: auto;
   }
