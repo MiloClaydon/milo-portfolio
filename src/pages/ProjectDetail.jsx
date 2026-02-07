@@ -33,13 +33,8 @@ const ImageCarousel = ({ images }) => {
   const file = images[currentIndex];
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div className="carousel-container" style={{
-        background: 'linear-gradient(to bottom, var(--retro-blue) 0% 15%, var(--retro-burgundy) 15% 30%, var(--retro-orange) 30% 60%, var(--retro-yellow) 60% 85%, var(--retro-tan) 85% 100%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}>
+    <div className="carousel-wrapper">
+      <div className="carousel-container carousel-frame">
         {images.length > 1 && (
           <>
             <button className="carousel-btn prev" onClick={handlePrev}><ChevronLeft /></button>
@@ -52,7 +47,6 @@ const ImageCarousel = ({ images }) => {
             src={getYouTubeEmbedUrl(file)}
             title="Project media"
             className="carousel-slide"
-            style={{ border: 0 }}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
@@ -64,7 +58,7 @@ const ImageCarousel = ({ images }) => {
         <div className="hockey-stick-decorator"></div>
       </div>
       {images.length > 1 && (
-        <p style={{ textAlign: 'center', marginTop: '10px', fontSize: '0.9rem', color: 'var(--retro-text)' }}>
+        <p className="carousel-counter">
           {currentIndex + 1} / {images.length}
         </p>
       )}
@@ -90,22 +84,22 @@ export default function ProjectDetail() {
   if (!project) return <div className="container"><h2>Project not found</h2></div>;
 
   return (
-    <div className="container project-detail" style={{ padding: '60px 0' }}>
-      <Link to="/" style={{ color: 'var(--retro-orange)', fontWeight: 'bold', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '5px' }}>
+    <div className="container project-detail">
+      <Link to="/" className="project-back-link">
         <ChevronLeft size={18} /> RETURN TO MISSION CONTROL
       </Link>
       
-      <h1 style={{ fontSize: '3.5rem', margin: '20px 0', color: 'var(--retro-burgundy)' }}>{project.title}</h1>
+      <h1 className="project-title">{project.title}</h1>
 
       {/* Steps Layout */}
       {project.layout === 'steps' && !isMobile && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
+        <div className="project-steps">
           {project.steps.map((step, index) => (
-            <div key={index} style={{ display: 'grid', gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
+            <div key={index} className="project-step-grid" style={{ gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr' }}>
               <div style={{ order: index % 2 === 0 ? 1 : 2 }}>
-                <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
-                <div className="retro-stripes-horizontal" style={{ height: '10px', width: '60%', margin: '10px 0 6px' }}></div>
-                <p style={{ fontSize: '1.2rem', marginTop: '0' }}>{step.description}</p>
+                <h2 className="project-step-title">0{index + 1}. {step.title}</h2>
+                <div className="retro-stripes-horizontal section-stripe-tight"></div>
+                <p className="project-step-desc">{step.description}</p>
               </div>
               <div style={{ order: index % 2 === 0 ? 2 : 1 }}>
                 <ImageCarousel images={step.images} />
@@ -116,15 +110,15 @@ export default function ProjectDetail() {
       )}
 
       {project.layout === 'steps' && isMobile && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
+        <div className="project-steps mobile">
           {project.steps.map((step, index) => (
-            <div key={index} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+            <div key={index} className="project-step-stack">
               <div>
-                <h2 style={{ fontSize: '1.8rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
-                <div className="retro-stripes-horizontal" style={{ height: '10px', width: '70%', margin: '10px 0 6px' }}></div>
+                <h2 className="project-step-title mobile">0{index + 1}. {step.title}</h2>
+                <div className="retro-stripes-horizontal section-stripe-wide"></div>
               </div>
               <ImageCarousel images={step.images} />
-              <p style={{ fontSize: '1.05rem', marginTop: 0 }}>{step.description}</p>
+              <p className="project-step-desc mobile">{step.description}</p>
             </div>
           ))}
         </div>
@@ -132,9 +126,9 @@ export default function ProjectDetail() {
 
       {/* Single Layout */}
       {project.layout === 'single' && !isMobile && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+        <div className="project-single">
           <div>
-            <p style={{ fontSize: '1.4rem' }}>{project.description}</p>
+            <p className="project-single-desc">{project.description}</p>
           </div>
           <div>
             {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
@@ -143,22 +137,22 @@ export default function ProjectDetail() {
       )}
 
       {project.layout === 'single' && isMobile && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="project-single-stack">
           {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
-          <p style={{ fontSize: '1.1rem' }}>{project.description}</p>
+          <p className="project-single-desc mobile">{project.description}</p>
         </div>
       )}
 
       {/* NEW: Technical Spec Sheet Section */}
       {project.technicalSpecs && (
-        <div style={{ marginTop: '100px', padding: '40px', backgroundColor: '#e8e4d9', border: '4px solid var(--retro-burgundy)', boxShadow: '8px 8px 0px var(--retro-orange)' }}>
-          <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-burgundy)', fontSize: '1.8rem', borderBottom: '2px solid var(--retro-text)', paddingBottom: '10px', marginBottom: '20px' }}>
+        <div className="project-specs">
+          <h3 className="project-specs-title">
             ENGINEERING SPECIFICATIONS & CHALLENGES
           </h3>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+          <ul className="project-specs-list">
             {project.technicalSpecs.map((spec, index) => (
-              <li key={index} style={{ marginBottom: '15px', display: 'flex', alignItems: 'flex-start', fontSize: '1.1rem' }}>
-                <span style={{ color: 'var(--retro-orange)', marginRight: '15px', fontWeight: 'bold' }}>&#9658;</span>
+              <li key={index} className="project-specs-item">
+                <span className="project-specs-arrow">&#9658;</span>
                 {spec}
               </li>
             ))}
@@ -168,13 +162,13 @@ export default function ProjectDetail() {
 
       {/* PDF Viewer for Watch Project */}
       {project.pdfPath && (
-        <div style={{ marginTop: '120px', marginBottom: '80px' }}>
-          <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--retro-burgundy)', fontSize: '1.6rem', marginBottom: '10px' }}>CERTIFIED TECHNICAL DRAWINGS</h3>
-          <p style={{ fontSize: '1rem', color: 'var(--retro-text)', marginBottom: '20px', fontStyle: 'italic' }}>
+        <div className="project-pdf">
+          <h3 className="project-pdf-title">CERTIFIED TECHNICAL DRAWINGS</h3>
+          <p className="project-pdf-intro">
             Production-ready engineering drawings conforming to ASME Y14.5-2018 Geometric Dimensioning and Tolerancing standards. All critical surfaces, datum references, and functional tolerances are fully defined for CNC manufacturing.
           </p>
-          <div style={{ border: '10px solid var(--retro-burgundy)', boxShadow: '12px 12px 0px var(--retro-yellow)', height: '800px', backgroundColor: '#222' }}>
-            <iframe src={`${project.pdfPath}#toolbar=0`} width="100%" height="100%" style={{ border: 'none' }} title="Technical Drawings" />
+          <div className="project-pdf-frame">
+            <iframe src={`${project.pdfPath}#toolbar=0`} width="100%" height="100%" title="Technical Drawings" />
           </div>
         </div>
       )}

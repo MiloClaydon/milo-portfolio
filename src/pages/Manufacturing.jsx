@@ -112,7 +112,7 @@ const ProcessSection = ({ section, index }) => {
       {/* Title */}
       <div className="process-heading">
         <h2 className="process-section-title">{section.title}</h2>
-        <div className="retro-stripes-horizontal" style={{ height: '12px', width: '60%', marginBottom: '1.5rem' }}></div>
+        <div className="retro-stripes-horizontal section-stripe-narrow"></div>
       </div>
 
       {/* Media carousel */}
@@ -130,7 +130,6 @@ const ProcessSection = ({ section, index }) => {
               src={getYouTubeEmbedUrl(section.media[currentMedia])}
               title={section.title}
               className="carousel-slide"
-              style={{ border: 0 }}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
@@ -187,7 +186,7 @@ export default function Manufacturing() {
         <React.Fragment key={index}>
           <ProcessSection section={section} index={index} />
           {index !== manufacturingData.length - 1 && (
-            <div className="retro-stripes-horizontal" style={{ opacity: 0.3 }}></div>
+            <div className="retro-stripes-horizontal section-divider"></div>
           )}
         </React.Fragment>
       ))}

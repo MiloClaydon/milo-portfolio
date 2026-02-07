@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import HomePage from './pages/HomePage';
 import Manufacturing from './pages/Manufacturing';
 import Contact from './pages/Contact';
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <ScrollToTop />
       <Navbar />
-      <div style={{ minHeight: '80vh' }}>
+      <div className="app-content">
         <Routes>
           <Route path="/" element={<HomePage />} /> 
           <Route path="/machining" element={<Manufacturing />} />
