@@ -184,21 +184,26 @@ iframe {
 .process-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 60px;
-  align-items: start;
+  align-items: center;
   margin-bottom: 60px;
 }
 
 .process-heading {
   grid-column: 1;
+  grid-row: 1;
 }
 
 .process-media {
   grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
 }
 
 .process-body {
   grid-column: 1;
+  grid-row: 2;
 }
 
 .process-grid.reverse .process-heading,
@@ -345,6 +350,7 @@ video.carousel-slide.no-crop {
 .project-step {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
+  grid-template-rows: auto auto;
   gap: 60px;
   align-items: center;
 }
@@ -356,10 +362,13 @@ video.carousel-slide.no-crop {
 .project-step-heading,
 .project-step-body {
   grid-column: 1;
+  align-self: start;
 }
 
 .project-step-media {
   grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
 }
 
 .project-step.reverse .project-step-heading,

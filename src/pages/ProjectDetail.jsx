@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { projects } from '../data/projects';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -75,6 +75,17 @@ const ImageCarousel = ({ images }) => {
 export default function ProjectDetail() {
   const { id } = useParams();
   const project = projects.find(p => p.id === id);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const updateIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    updateIsMobile();
+    window.addEventListener('resize', updateIsMobile);
+    return () => window.removeEventListener('resize', updateIsMobile);
+  }, []);
 
   if (!project) return <div className="container"><h2>Project not found</h2></div>;
 
@@ -87,33 +98,54 @@ export default function ProjectDetail() {
       <h1 style={{ fontSize: '3.5rem', margin: '20px 0', color: 'var(--retro-burgundy)' }}>{project.title}</h1>
 
       {/* Steps Layout */}
-      {project.layout === 'steps' && (
+      {project.layout === 'steps' && !isMobile && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '100px' }}>
           {project.steps.map((step, index) => (
-            <div key={index} className={`project-step${index % 2 !== 0 ? ' reverse' : ''}`}>
-              <div className="project-step-heading">
+            <div key={index} style={{ display: 'grid', gridTemplateColumns: index % 2 === 0 ? '1fr 1.2fr' : '1.2fr 1fr', gap: '60px', alignItems: 'center' }}>
+              <div style={{ order: index % 2 === 0 ? 1 : 2 }}>
                 <h2 style={{ fontSize: '2rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
+                <div className="retro-stripes-horizontal" style={{ height: '10px', width: '60%', margin: '10px 0 6px' }}></div>
+                <p style={{ fontSize: '1.2rem', marginTop: '0' }}>{step.description}</p>
               </div>
-              <div className="project-step-media">
+              <div style={{ order: index % 2 === 0 ? 2 : 1 }}>
                 <ImageCarousel images={step.images} />
-              </div>
-              <div className="project-step-body">
-                <p style={{ fontSize: '1.2rem', marginTop: '20px' }}>{step.description}</p>
               </div>
             </div>
           ))}
         </div>
       )}
 
+      {project.layout === 'steps' && isMobile && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
+          {project.steps.map((step, index) => (
+            <div key={index} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+              <div>
+                <h2 style={{ fontSize: '1.8rem', borderBottom: '4px solid var(--retro-orange)', display: 'inline-block' }}>0{index + 1}. {step.title}</h2>
+                <div className="retro-stripes-horizontal" style={{ height: '10px', width: '70%', margin: '10px 0 6px' }}></div>
+              </div>
+              <ImageCarousel images={step.images} />
+              <p style={{ fontSize: '1.05rem', marginTop: 0 }}>{step.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* Single Layout */}
-      {project.layout === 'single' && (
-        <div className="project-single" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
-          <div className="project-single-body">
+      {project.layout === 'single' && !isMobile && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px' }}>
+          <div>
             <p style={{ fontSize: '1.4rem' }}>{project.description}</p>
           </div>
-          <div className="project-single-media">
+          <div>
             {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
           </div>
+        </div>
+      )}
+
+      {project.layout === 'single' && isMobile && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {project.images && project.images.length > 0 && <ImageCarousel images={project.images} />}
+          <p style={{ fontSize: '1.1rem' }}>{project.description}</p>
         </div>
       )}
 

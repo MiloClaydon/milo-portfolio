@@ -110,7 +110,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
       {
         title: "The Finished Piece",
         description: "Putting this on my wrist for the first time was surreal. Sure, I can still see the tiny imperfections that nobody else notices, but that's part of the charm. It works, it's waterproof, and it's proof that I can take an idea from a sketch to a functional mechanical assembly. I'm almost afraid to wear it and scratch it, but it drives me to want to build the next one even better.",
-        images: []
+        images: [Watch5, Watch6]
       }
     ],
     technicalSpecs: [

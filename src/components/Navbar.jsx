@@ -126,7 +126,7 @@ export default function Navbar() {
         </button>
 
         {/* Links with same boxed style as logo */}
-        <ul className={`nav-links${isMenuOpen ? ' open' : ''}`} style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0, padding: 0, height: '100%', alignItems: 'center' }}>
+        <ul className={`nav-links${isMenuOpen ? ' open' : ''}`}>
           <li>
             <Link to="/" style={navLinkStyle} className="nav-link" onClick={() => setIsMenuOpen(false)}
               onMouseEnter={(e) => {
