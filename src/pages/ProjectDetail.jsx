@@ -163,9 +163,11 @@ export default function ProjectDetail() {
       {/* PDF Viewer for Watch Project */}
       {project.pdfPath && (
         <div className="project-pdf">
-          <h3 className="project-pdf-title">CERTIFIED TECHNICAL DRAWINGS</h3>
+          <h3 className="project-pdf-title">
+            {project.pdfTitle || "CERTIFIED TECHNICAL DRAWINGS"}
+          </h3>
           <p className="project-pdf-intro">
-            Production-ready engineering drawings conforming to ASME Y14.5-2018 Geometric Dimensioning and Tolerancing standards. All critical surfaces, datum references, and functional tolerances are fully defined for CNC manufacturing.
+            {project.pdfIntro || "Production-ready engineering drawings conforming to ASME Y14.5-2018 Geometric Dimensioning and Tolerancing standards. All critical surfaces, datum references, and functional tolerances are fully defined for CNC manufacturing."}
           </p>
           <div className="project-pdf-frame">
             <iframe src={`${project.pdfPath}#toolbar=0`} width="100%" height="100%" title="Technical Drawings" />

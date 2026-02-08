@@ -133,6 +133,9 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     description: "Space Concordia builds the most powerful student rocket engines on the planet. The problem? It took 10 people three full days to hand-lay the carbon fiber fuselage. I co-led a team of six to fix this. We didn't just automate a process; we built a 4-axis robot from scratch. I acted as the 'utility player' doing the structural welding, calculating the motion paths, and writing the Python code to synchronize everything. We turned a 3-day nightmare into a 2-hour push-button operation.",
     tech: ["Python", "Mechatronics", "Structural Welding", "Automation", "NEMA 52 Servos"],
     year: "2025",
+    pdfPath: "/assets/user%20manual%20capstone.pdf",
+    pdfTitle: "FILAMENT WINDER USER MANUAL",
+    pdfIntro: "Operations manual and procedures for the Carbon Fiber Filament Winding Machine (Capstone Team 25).",
     layout: "steps",
     steps: [
       {
@@ -152,13 +155,13 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
       }
     ],
     technicalSpecs: [
-      "Control System: Raspberry Pi 4 running a custom Python script with multi-threading for real-time axis control.",
-      "Motors: NEMA 52 (Mandrel Axis) for high-torque rotation; NEMA 23 (Carriage/Eye) for rapid linear positioning.",
-      "Kinematics: 4-Axis synchronized motion (Mandrel Rotation, Carriage Linear, Eye Rotation, Eye Linear).",
-      "Power Transmission: Precision ball screws for zero-backlash carriage movement.",
-      "Tension Control: Active closed-loop feedback maintaining 10-60lbs tension on the fiber tows.",
-      "Fabrication: MIG welded mild steel RHS frame; water-jet cut 6061 aluminum motor mounts.",
-      "Challenge: Mathematically mapping the linear carriage velocity to the variable angular velocity of the mandrel to maintain a constant winding angle."
+      "Control System: Arduino Mega 2560 running GRBL-Mega-5X; serial control at 115200 baud via Universal G-code Sender (UGS).",
+      "Axes: 4-axis layout (X, Y, Z, A) mapped to carriage rotation/extension, carriage travel, and mandrel rotation.",
+      "Max Mandrel Mass: 150 kg total on mandrel feet (limited by mandrel motor stopping capability).",
+      "Max Mandrel Length: 1.5 m winding path (carriage travel limited; rails allow ~25 cm extension).",
+      "Max Mandrel Diameter: 0.5 m (limited by carriage clearance and mandrel center height).",
+      "Tow Capacity: 6 tows maximum with combined tension up to 240 N (limited by carriage/Y-axis hardware).",
+      "Baseline Motion: X 69, Y 100, Z 100, A 200 mm/s² accelerations; X 140, Y 280, Z 169, A 280 mm/s feed speeds."
     ]
   },
   {
