@@ -18,9 +18,21 @@ export default function ProjectCard({ project }) {
           {project.year} | {project.category}
         </p>
         <p>{project.summary}</p>
-        <Link to={`/project/${project.id}`} className="btn-retro">
-          FULL SPECS &gt;
-        </Link>
+        <div className="project-card-actions">
+          <Link to={`/project/${project.id}`} className="btn-retro">
+            FULL SPECS &gt;
+          </Link>
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              className="btn-retro secondary"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {project.githubLabel || "GITHUB"}
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

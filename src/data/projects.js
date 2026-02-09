@@ -67,26 +67,6 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
 
   export const projects = [
   {
-    id: "portfolio-site",
-    title: "Portfolio Website",
-    category: "Software",
-    summary: "A React-based portfolio coded from scratch to showcase engineering work.",
-    cardImage: Website1Code,
-    description: "I wanted a portfolio that wasn't just another AI generated template. I treated this website like an engineering project: defining the constraints (no bloat, high performance), choosing the right tools (React, Vite), and iterating until the user experience felt snappy. It was a deep dive into modern web development, teaching me how to structure component architecture and manage assets properly in a production environment.",
-    tech: ["React.js", "Vite", "CSS3", "JavaScript", "Cloudinary"],
-    year: "2026",
-    layout: "single",
-    images: [],
-    technicalSpecs: [
-      "Stack: React 18, Vite, React Router DOM for seamless client-side navigation.",
-      "Deployment: Continuous Integration/Deployment (CI/CD) via Netlify.",
-      "Performance: Implemented Cloudinary CDN with f_auto/q_auto optimization, reducing image payloads by ~60%.",
-      "Styling: Hand-coded CSS variables for strict theming; complex SVG manipulation for the responsive 'hockey stick' stripes.",
-      "Architecture: Modular design with reusable 'ProjectCard' and 'ProjectDetail' components handling dynamic data structures.",
-      "Challenge: Designing a responsive SVG background that maintains aspect ratio and precise stripe alignment across every viewport size."
-    ]
-  },
-  {
     id: "wristwatch",
     title: "Precision Wristwatch",
     category: "Machining",
@@ -94,6 +74,16 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: FinalWatch,
     description: "It started with a challenge from my mentor, Mr. Rembacz: 'Design something you can't just buy.' I chose a watch because it’s the ultimate test of patience. It wasn't just about cutting metal; it was about battling thermal expansion, fighting work-hardening stainless steel, and realizing that my CAD model’s 'perfect' dimensions were a fantasy until I learned how to actually machine them. This project was a 100-hour lesson in humility, metrology, and the stubborn reality of manufacturing.",
     tech: ["SolidWorks", "CAM", "Tormach 1100MX", "Metrology", "DFM"],
+    arsenal: [
+      "CAD",
+      "CAM",
+      "Manual machining",
+      "CNC machining",
+      "Design",
+      "Design for manufacturing",
+      "Metrology",
+      "GD&T"
+    ],
     year: "2025",
     pdfPath: "/assets/watchdrawing.pdf",
     layout: "steps",
@@ -132,6 +122,16 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: WinderSchematic,
     description: "Space Concordia builds the most powerful student rocket engines on the planet. The problem? It took 10 people three full days to hand-lay the carbon fiber fuselage. I co-led a team of six to fix this. We didn't just automate a process; we built a 4-axis robot from scratch. I acted as the 'utility player' doing the structural welding, calculating the motion paths, and writing the Python code to synchronize everything. We turned a 3-day nightmare into a 2-hour push-button operation.",
     tech: ["Python", "Mechatronics", "Structural Welding", "Automation", "NEMA 52 Servos"],
+    arsenal: [
+      "CAD",
+      "Electronics",
+      "Design",
+      "Management",
+      "Team skills",
+      "Welding and fabrication",
+      "Automation",
+      "Coding"
+    ],
     year: "2025",
     pdfPath: "/assets/user%20manual%20capstone.pdf",
     pdfTitle: "FILAMENT WINDER USER MANUAL",
@@ -139,7 +139,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     layout: "steps",
     steps: [
       {
-        title: "The 'Toy' vs. The Beast",
+        title: "The Design Problem",
         description: "We started by buying an off-the-shelf winder, but it was a joke tiny NEMA 17 motors and Acetal wheels trying to pull 60lbs of fiber tension. We realized immediately we had to scrap it. I helped design a custom welded steel chassis and sourced massive NEMA 52 servos that could actually handle the torque requirements of a rocket engine.",
         images: [WinderCAD3, CarriageWinder, WinderCAD2,WinderCAD1, CNCParts2, WeldedFoot1,Winder1]
       },
@@ -165,6 +165,32 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     ]
   },
   {
+    id: "portfolio-site",
+    title: "Portfolio Website",
+    category: "Software",
+    summary: "A React-based portfolio coded from scratch to showcase engineering work.",
+    cardImage: Website1Code,
+    description: "I wanted a portfolio that wasn't just another AI generated template. I treated this website like an engineering project: defining the constraints (no bloat, high performance), choosing the right tools (React, Vite), and iterating until the user experience felt snappy. It was a deep dive into modern web development, teaching me how to structure component architecture and manage assets properly in a production environment.",
+    tech: ["React.js", "Vite", "CSS3", "JavaScript", "Cloudinary"],
+    arsenal: [
+      "Design",
+      "Coding"
+    ],
+    year: "2026",
+    githubUrl: "https://github.com/MiloClaydon/milo-portfolio",
+    githubLabel: "GITHUB REPO",
+    layout: "single",
+    images: [],
+    technicalSpecs: [
+      "Stack: React 18, Vite, React Router DOM for seamless client-side navigation.",
+      "Deployment: Continuous Integration/Deployment (CI/CD) via Netlify.",
+      "Performance: Implemented Cloudinary CDN with f_auto/q_auto optimization, reducing image payloads by ~60%.",
+      "Styling: Hand-coded CSS variables for strict theming; complex SVG manipulation for the responsive 'hockey stick' stripes.",
+      "Architecture: Modular design with reusable 'ProjectCard' and 'ProjectDetail' components handling dynamic data structures.",
+      "Challenge: Designing a responsive SVG background that maintains aspect ratio and precise stripe alignment across every viewport size."
+    ]
+  },
+  {
     id: "pottery-wheel",
     title: "Upcycled Pottery Wheel",
     category: "Mechatronics",
@@ -172,6 +198,11 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: PotteryWheel,
     description: "My girlfriend mentioned she wanted to try pottery. Most people would just buy a wheel; I saw an opportunity to build a monster. I went hunting for parts and found a 'broken' washing machine (which, fun fact, turned out to be full of about 1,000 sewing needles don't ask) and a 2.25HP motor from an old treadmill. The engineering challenge was mating a motor that wants to spin at 20,000 RPM with a wheel that needs to go 30 RPM. It's a piece of 'Frankenstein engineering' that works better than the pro gear.",
     tech: ["Upcycling", "Power Electronics", "Mechanical Mating", "Fabrication"],
+    arsenal: [
+      "Design",
+      "Electronics",
+      "Welding and fabrication"
+    ],
     year: "2023",
     layout: "single",
     images: [Wheel1,PotteryWheel],
@@ -192,6 +223,11 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: Voltmeter1,
     description: "In a world of cheap Arduinos, I wanted to do this the hard way. I needed to understand exactly *how* a digital display works, not just how to code one. I built this voltmeter using nothing but discrete logic chips gates, comparators, and timers. It forced me to manage signal timing, switch bounce, and logic states physically rather than in software. It was an exercise in first-principles engineering that taught me that sometimes, hardware logic is faster, cheaper, and more robust than a processor.",
     tech: ["Digital Logic", "Integrated Circuits", "PCB Design", "Circuit Analysis"],
+    arsenal: [
+      "Electronics",
+      "Design",
+      "Coding"
+    ],
     year: "2023",
     layout: "single",
     images: [Voltmeter1,Voltmeter2,Voltmeter3,Voltmeter4,Voltmeter5],
@@ -232,6 +268,13 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: PrinterPic,
     description: "I don't just use printers; I engineer them. This project covers two distinct builds. First, the 'Ship of Theseus' I bought a broken, terrible acrylic printer off Facebook Marketplace and spent hundreds of hours replacing every single part until it became a Klipper-powered workhorse. Second, my Voron V0 I needed something portable and fast for school, so I built a machine that lives in my backpack and prints parts on demand between classes. I optimized both with macros for auto-leveling and nozzle cleaning so I can hit 'print' and walk away.",
     tech: ["Klipper", "Voron Design", "BigTreeTech", "Mechanical Design", "Remote Monitoring"],
+    arsenal: [
+      "CAD",
+      "Electronics",
+      "Design",
+      "Automation",
+      "Coding"
+    ],
     year: "2024",
     layout: "steps",
     steps: [
@@ -262,6 +305,12 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
     cardImage: SpotWelder,
     description: "I wanted to build custom batteries for e-bikes, but commercial spot welders were expensive. So, I built one. I salvaged a transformer from an old microwave, cut out the secondary coil, and rewound it with thick gauge wire to dump massive current at low voltage. Using this 'scary but effective' tool, I welded nickel strips to 18650 cells (harvested from old laptops) to build safe, high-capacity packs. It taught me a lot about battery chemistry, thermal management, and respecting high-amperage circuits.",
     tech: ["Design", "Electronics", "Welding", "Coding"],
+    arsenal: [
+      "Design",
+      "Electronics",
+      "Welding and fabrication",
+      "Coding"
+    ],
     year: "2022",
     layout: "single",
     images: [SpotWelder,Batteries],

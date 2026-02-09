@@ -90,6 +90,26 @@ export default function ProjectDetail() {
       </Link>
       
       <h1 className="project-title">{project.title}</h1>
+      {project.githubUrl && (
+        <a
+          href={project.githubUrl}
+          className="project-github-link"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {project.githubLabel || "VIEW ON GITHUB"}
+        </a>
+      )}
+      {project.arsenal && project.arsenal.length > 0 && (
+        <div className="project-tech">
+          <p className="project-tech-title">Technical Arsenal</p>
+          <div className="project-tech-list">
+            {project.arsenal.map((item, index) => (
+              <span key={index} className="project-tech-pill">{item}</span>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Steps Layout */}
       {project.layout === 'steps' && !isMobile && (
