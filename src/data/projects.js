@@ -68,7 +68,7 @@ const BuildingWithGrandpa = 'https://res.cloudinary.com/dpe1tjjay/image/upload/v
   export const projects = [
   {
     id: "wristwatch",
-    title: "Precision Wristwatch",
+    title: "Precision Machined Wristwatch",
     category: "Machining",
     summary: "A deep dive into high-tolerance product design and precision stainless steel machining.",
     cardImage: FinalWatch,
