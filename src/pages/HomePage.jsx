@@ -14,7 +14,7 @@ export default function Home() {
         <div className="hero-text">
           <img src={Logo} alt="Milo Claydon logo" className="home-logo" />
           <h1 className="home-hero-title">
-            MILO<br />CLAYDN
+            MILO<br />CLAYDON
           </h1>
           <h2 className="home-hero-subtitle">
             Engineering
